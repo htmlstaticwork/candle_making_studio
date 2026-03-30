@@ -1,0 +1,116 @@
+/* 
+   Candle Making Studio - Dark Mode Overrides
+*/
+
+[data-theme="dark"] {
+    --bg-color: #1A1008;
+    --text-color: #F5E6D3;
+    --secondary-color: #2C1A0E;
+    --card-bg: #22150B;
+    --card-shadow: rgba(0, 0, 0, 0.4);
+    --primary-color: #F5E6D3; /* Switch primary text/button background for visibility in dark mode */
+    --accent-gold: #D4A853;
+    --glow-shadow: rgba(212, 168, 83, 0.15);
+}
+
+/* Specific elements that need re-coloring in dark mode */
+[data-theme="dark"] .btn-studio-primary {
+    background-color: var(--accent-gold);
+    border-color: var(--accent-gold);
+    color: #1A1008 !important;
+}
+
+[data-theme="dark"] .btn-studio-secondary {
+    color: var(--accent-gold);
+    border-color: var(--accent-gold);
+}
+
+[data-theme="dark"] .btn-studio-secondary:hover {
+    background-color: var(--accent-gold);
+    color: #1A1008;
+}
+
+[data-theme="dark"] .navbar {
+    background: rgba(26, 16, 8, 0.85) !important;
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(212, 168, 83, 0.1);
+}
+
+[data-theme="dark"] .nav-link {
+    color: var(--text-color) !important;
+}
+
+[data-theme="dark"] .footer {
+    background: #110B06;
+}
+
+[data-theme="dark"] .section-title p {
+    color: var(--accent-gold);
+}
+
+[data-theme="dark"] .form-control {
+    border-color: rgba(245, 230, 211, 0.15);
+}
+
+[data-theme="dark"] .form-control:focus {
+    border-color: var(--accent-gold);
+}
+
+/* Shadow depth adjustments */
+[data-theme="dark"] .workshop-card {
+    border-color: rgba(212, 168, 83, 0.05);
+}
+
+[data-theme="dark"] .card {
+    background-color: var(--card-bg);
+}
+
+[data-theme="dark"] .bg-white {
+    background-color: var(--card-bg) !important;
+}
+
+/* Table Dark Mode Fix */
+[data-theme="dark"] .table {
+    --bs-table-color: var(--text-color);
+    --bs-table-bg: transparent;
+    --bs-table-border-color: rgba(245, 230, 211, 0.1);
+    color: var(--text-color);
+}
+
+[data-theme="dark"] .table-bordered {
+    border-color: rgba(245, 230, 211, 0.1);
+}
+
+[data-theme="dark"] .bg-secondary {
+    background-color: var(--secondary-color) !important;
+    color: var(--text-color) !important;
+}
+
+[data-theme="dark"] .table > :not(caption) > * > * {
+    background-color: transparent !important;
+    color: inherit;
+    border-color: rgba(245, 230, 211, 0.1);
+}
+
+@media (max-width: 1199.98px) {
+    [data-theme="dark"] #offcanvasNavbar {
+        background: linear-gradient(180deg, #24160D 0%, #140B06 100%) !important;
+        color: #F5E6D3 !important;
+    }
+
+    [data-theme="dark"] #offcanvasNavbar .offcanvas-header {
+        border-bottom: 1px solid rgba(212, 168, 83, 0.18);
+    }
+
+    [data-theme="dark"] #offcanvasNavbar .offcanvas-title,
+    [data-theme="dark"] #offcanvasNavbar .nav-link {
+        color: #F5E6D3 !important;
+    }
+
+    [data-theme="dark"] #offcanvasNavbar .theme-toggle,
+    [data-theme="dark"] #offcanvasNavbar .rtl-toggle {
+        color: #F5E6D3;
+        background: rgba(245, 230, 211, 0.06);
+        border: 1px solid rgba(212, 168, 83, 0.2);
+    }
+}

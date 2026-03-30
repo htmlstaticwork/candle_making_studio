@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Our Story | Candle Making Studio</title>
+    <link rel="icon" type="image/svg+xml" href="assets/images/favicon.svg">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/dark-mode.css">
+    <style>
+        .instructor-card {
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            background: var(--card-bg);
+            box-shadow: 0 10px 30px var(--card-shadow);
+            transition: var(--transition-smooth);
+            height: 100%;
+        }
+        .instructor-card:hover { transform: translateY(-10px); }
+        .instructor-img { height: 350px; object-fit: cover; }
+        
+        .timeline-container {
+            position: relative;
+            padding-inline-start: 50px;
+            border-inline-start: 2px dashed var(--accent-gold);
+        }
+        .timeline-item {
+            position: relative;
+            margin-bottom: 50px;
+        }
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            inset-inline-start: -58px;
+            top: 0;
+            width: 15px;
+            height: 15px;
+            background: var(--accent-gold);
+            border-radius: 50%;
+            box-shadow: 0 0 10px var(--accent-gold);
+        }
+
+        .about-hero {
+            background-color: var(--bg-color);
+            border-bottom: 1px solid rgba(44, 26, 14, 0.05);
+        }
+
+        /* Gallery Mosaic */
+        .gallery-mosaic {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            grid-auto-rows: 280px;
+            gap: 25px;
+        }
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: var(--radius-lg);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: var(--transition-smooth);
+        }
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.8s cubic-bezier(0.165, 0.84, 0.44, 1);
+        }
+        .gallery-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .gi-1 { grid-column: span 2; grid-row: span 2; }
+        .gi-2 { grid-column: span 2; grid-row: span 1; }
+        .gi-3 { grid-column: span 1; grid-row: span 1; }
+        .gi-4 { grid-column: span 1; grid-row: span 1; }
+        .gi-5 { grid-column: span 2; grid-row: span 2; }
+        .gi-6 { grid-column: span 2; grid-row: span 2; }
+
+        .gallery-overlay {
+            position: absolute;
+            inset: 0;
+            background: var(--primary-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: var(--transition-smooth);
+            padding: 2.5rem;
+            text-align: center;
+            pointer-events: none;
+            z-index: 2;
+        }
+
+        .gallery-item:hover .gallery-overlay {
+            opacity: 0.85;
+        }
+
+        .gallery-overlay span {
+            color: var(--secondary-color);
+            font-family: var(--font-heading);
+            font-weight: 700;
+            font-size: 1.5rem;
+            transform: translateY(20px);
+            transition: var(--transition-smooth);
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+        }
+
+        .gallery-item:hover .gallery-overlay span {
+            transform: translateY(0);
+        }
+
+        @media (max-width: 991px) {
+            .gallery-mosaic {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 15px;
+            }
+            .gi-1, .gi-2, .gi-3, .gi-4, .gi-5, .gi-6 {
+                grid-column: span 1;
+                grid-row: span 1;
+                height: 250px;
+            }
+        }
+
+        @media (max-width: 767px) {
+            .gallery-mosaic {
+                grid-template-columns: 1fr;
+                gap: 30px; /* Increased gap to prevent overlapping */
+            }
+            .gi-1, .gi-2, .gi-3, .gi-4, .gi-5, .gi-6 {
+                grid-column: span 1 !important;
+                grid-row: span 1 !important;
+                height: 300px;
+            }
+            .gallery-overlay {
+                padding: 1.5rem;
+            }
+            .gallery-overlay span {
+                font-size: 1.4rem;
+                letter-spacing: 0.05em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="navbar navbar-expand-xl">
+        <div class="container-fluid container-custom">
+            <a class="navbar-brand" href="index.html">
+                <svg viewBox="0 0 40 40" fill="none" class="flame-icon">
+                    <path d="M12 30V18C12 16.8954 12.8954 16 14 16H18C19.1046 16 20 16.8954 20 18V30" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+                    <path d="M12 30H28" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+                    <line x1="16" y1="16" x2="16" y2="12" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+                    <path d="M16 4C16 4 19 7.5 19 10C19 11.6569 17.6569 13 16 13C14.3431 13 13 11.6569 13 10C13 7.5 16 4 16 4Z" fill="var(--accent-gold)">
+                        <animate attributeName="opacity" values="0.8;1;0.8" dur="2s" repeatCount="indefinite" />
+                    </path>
+                </svg>
+                LUMORA
+            </a>
+            
+            <button class="navbar-toggler border-0 p-0" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
+                <i class="bi bi-list fs-1" style="color: var(--text-color);"></i>
+            </button>
+
+            <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+                <div class="offcanvas-header">
+                    <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Menu</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                </div>
+                <div class="offcanvas-body">
+                    <ul class="navbar-nav ms-auto-logical align-items-xl-center">
+                        <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                        <li class="nav-item"><a class="nav-link" href="home-2.html">Home 2</a></li>
+                        <li class="nav-item"><a class="nav-link active" href="about.html">About</a></li>
+                        <li class="nav-item"><a class="nav-link" href="workshops.html">Workshops</a></li>
+                        <li class="nav-item"><a class="nav-link" href="blog.html">Blog</a></li>
+                        <li class="nav-item"><a class="nav-link" href="pricing.html">Pricing</a></li>
+                        <li class="nav-item me-xl-5"><a class="nav-link" href="contact.html">Contact</a></li>
+                        <li class="nav-item mt-3 mt-xl-0 mx-xl-2">
+                            <a class="btn-studio-secondary py-2" href="login.html">Login</a>
+                        </li>
+                        <li class="nav-item ms-xl-3 d-flex gap-2 mt-3 mt-xl-0 justify-content-center">
+                            <a href="dashboard.html" class="dashboard-btn" title="Dashboard">
+                                <i class="bi bi-grid-3x3-gap-fill"></i>
+                            </a>
+                            <button id="theme-toggle" class="theme-toggle" title="Toggle Theme">
+                                <i class="bi bi-moon"></i>
+                            </button>
+                            <button id="rtl-toggle" class="rtl-toggle" title="Toggle RTL">
+                                <i class="bi bi-translate"></i>
+                            </button>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- About Hero (Minimalist) -->
+        <section class="about-hero py-5 text-center">
+            <div class="container-custom py-4 reveal-on-scroll">
+                <p class="text-gold fw-bold mb-2">LUMORA</p>
+                <h1 class="display-3 fw-800 mb-3">Our <span class="text-gold">Journey</span></h1>
+                <div class="d-flex justify-content-center">
+                    <div style="width: 50px; height: 2px; background: var(--accent-gold);"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Story -->
+        <section class="py-5">
+            <div class="container-custom">
+                <div class="row align-items-center g-5">
+                    <div class="col-lg-6 reveal-on-scroll">
+                        <img src="assets/images/hero-1.png" alt="Founder" class="img-fluid rounded-4 shadow-lg">
+                    </div>
+                    <div class="col-lg-6 reveal-on-scroll">
+                        <p class="text-gold fw-bold">The Heart of Our Craft</p>
+                        <h2 class="display-4 fw-800 mb-4">Born from a Flicker of <span class="text-gold">Inspiration</span>.</h2>
+                        <p class="lead mb-4">In 2018, Studio Candle began in a small suburban garage with just three scents and a dream to bring warmth to every home.</p>
+                        <p class="mb-4">Founded by artisan Clara Meadows, our studio has grown into a sanctuary for creators. We believe that candle making is more than a craft—it's a sensory journey that connects us to the present moment and to each other.</p>
+                        <div class="row g-4 mt-2">
+                            <div class="col-md-4">
+                                <h4 class="text-gold">100%</h4>
+                                <p class="small">Natural Ingredients</p>
+                            </div>
+                            <div class="col-md-4">
+                                <h4 class="text-gold">500+</h4>
+                                <p class="small">Classes Conducted</p>
+                            </div>
+                            <div class="col-md-4">
+                                <h4 class="text-gold">2k+</h4>
+                                <p class="small">Active Community</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Mission & Values -->
+        <section class="py-5" style="background-color: var(--secondary-color);">
+            <div class="container-custom">
+                <div class="section-title reveal-on-scroll">
+                    <p>Our Core</p>
+                    <h2>What We Stand For</h2>
+                </div>
+                <div class="row g-4">
+                    <div class="col-md-4 reveal-on-scroll">
+                        <div class="workshop-card text-center h-100">
+                            <i class="bi bi-tree fs-1 text-gold mb-3 d-block"></i>
+                            <h4>Sustainability</h4>
+                            <p>We source only ethical beeswax and organic soy, ensuring our planet stays as bright as our candles.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4 reveal-on-scroll" style="transition-delay: 0.1s">
+                        <div class="workshop-card text-center h-100">
+                            <i class="bi bi-palette fs-1 text-gold mb-3 d-block"></i>
+                            <h4>Creativity</h4>
+                            <p>Every pour is an opportunity for expression. We provide the tools; you provide the vision.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4 reveal-on-scroll" style="transition-delay: 0.2s">
+                        <div class="workshop-card text-center h-100">
+                            <i class="bi bi-heart fs-1 text-gold mb-3 d-block"></i>
+                            <h4>Community</h4>
+                            <p>We foster a space where people from all walks of life can gather, create, and share their stories.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Meet the Instructors -->
+        <section class="py-5">
+            <div class="container-custom">
+                <div class="section-title reveal-on-scroll">
+                    <p>Expert Guidance</p>
+                    <h2>Meet the Mentors</h2>
+                </div>
+                <div class="row g-4">
+                    <div class="col-md-4 reveal-on-scroll">
+                        <div class="instructor-card">
+                            <img src="assets/images/hero-1.png" class="instructor-img w-100" alt="Clara Meadows">
+                            <div class="p-4 text-center">
+                                <h5>Clara Meadows</h5>
+                                <p class="text-gold small mb-0">Founder & Master Scentist</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 reveal-on-scroll" style="transition-delay: 0.1s">
+                        <div class="instructor-card">
+                            <img src="assets/images/hero-2.png" class="instructor-img w-100" alt="Marcus Thorne">
+                            <div class="p-4 text-center">
+                                <h5>Marcus Thorne</h5>
+                                <p class="text-gold small mb-0">Senior Sculptor</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 reveal-on-scroll" style="transition-delay: 0.2s">
+                        <div class="instructor-card">
+                            <img src="assets/images/workshop-1.png" class="instructor-img w-100" alt="Elena Vanes">
+                            <div class="p-4 text-center">
+                                <h5>Elena Vanes</h5>
+                                <p class="text-gold small mb-0">Aromatherapy Specialist</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Studio Gallery -->
+        <section class="py-5" style="background-color: rgba(245, 230, 211, 0.4);">
+            <div class="container-custom">
+                <div class="section-title reveal-on-scroll text-center mb-5">
+                    <p>Our Space</p>
+                    <h2>Studio Gallery</h2>
+                </div>
+                <div class="gallery-mosaic reveal-on-scroll">
+                   <div class="gallery-item gi-1">
+                       <img src="https://brandtkaarsen.nl/wp-content/uploads/2020/04/ambachtelijke-kaarsenmakerij-giselle-habraken.jpg" alt="Crafting process">
+                       <div class="gallery-overlay"><span>Crafting process</span></div>
+                   </div>
+                   <div class="gallery-item gi-2">
+                       <img src="https://images.unsplash.com/photo-1602607203588-d6d0eda790e3?q=80&w=1169&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Supplies">
+                       <div class="gallery-overlay"><span>Supplies</span></div>
+                   </div>
+                   <div class="gallery-item gi-3">
+                       <img src="https://www.shutterstock.com/image-photo/candle-maker-pouring-wax-into-600nw-2635065309.jpg" alt="Pouring">
+                       <div class="gallery-overlay"><span>Pouring</span></div>
+                   </div>
+                   <div class="gallery-item gi-4">
+                       <img src="https://i.pinimg.com/236x/52/12/54/521254aaea6ae258d3d057378bc7f7dd.jpg" alt="Tools">
+                       <div class="gallery-overlay"><span>Tools</span></div>
+                   </div>
+                   <div class="gallery-item gi-5">
+                       <img src="https://images.unsplash.com/photo-1718788392540-0862a47c8c30?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8Y2FuZGxlJTIwbWFraW5nfGVufDB8fDB8fHww" alt="Ingredients">
+                       <div class="gallery-overlay"><span>Ingredients</span></div>
+                   </div>
+                   <div class="gallery-item gi-6">
+                       <img src="https://images.unsplash.com/photo-1603218678692-3967d7523bb0?q=80&w=1170&auto=format&fit=crop" alt="Finished candle">
+                       <div class="gallery-overlay"><span>Finished candle</span></div>
+                   </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container-custom">
+            <div class="row">
+                <div class="col-lg-4 col-12 text-center text-lg-start">
+                    <a class="footer-logo d-flex align-items-center justify-content-center justify-content-lg-start gap-2 mb-4" href="index.html">
+                        <svg viewBox="0 0 40 40" fill="none" class="flame-icon" style="width: 32px; height: 32px;">
+                            <path d="M12 30V18C12 16.8954 12.8954 16 14 16H18C19.1046 16 20 16.8954 20 18V30" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+                            <path d="M12 30H28" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+                            <line x1="16" y1="16" x2="16" y2="12" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+                            <path d="M16 4C16 4 19 7.5 19 10C19 11.6569 17.6569 13 16 13C14.3431 13 13 11.6569 13 10C13 7.5 16 4 16 4Z" fill="var(--accent-gold)">
+                                <animate attributeName="opacity" values="0.8;1;0.8" dur="2s" repeatCount="indefinite" />
+                            </path>
+                        </svg>
+                        LUMORA
+                    </a>
+                    <p class="opacity-75">Creating warm, handcrafted experiences that illuminate your life through the art of candle making.</p>
+                    <div class="d-flex gap-3 mt-4 justify-content-center justify-content-lg-start">
+                        <a href="#" class="footer-social-link"><i class="bi bi-instagram"></i></a>
+                        <a href="#" class="footer-social-link"><i class="bi bi-facebook"></i></a>
+                        <a href="#" class="footer-social-link"><i class="bi bi-pinterest"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-12 footer-links ms-auto-logical text-center text-lg-start mt-5 mt-lg-0">
+                    <h5>Quick Links</h5>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="workshops.html">Workshops</a></li>
+                        <li><a href="blog.html">Blog</a></li>
+                        <li><a href="pricing.html">Pricing</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-2 col-12 footer-links text-center text-lg-start mt-5 mt-lg-0">
+                    <h5>Support</h5>
+                    <ul>
+                        <li><a href="contact.html">Contact Us</a></li>
+                        <li><a href="#">FAQ</a></li>
+                        <li><a href="about.html">How It Works</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-4 col-12 text-center text-lg-start mt-5 mt-lg-0">
+                    <h5>Contact Info</h5>
+                    <ul class="footer-links list-unstyled">
+                        <li class="d-flex gap-3 opacity-75 mb-3 justify-content-center justify-content-lg-start"><i class="bi bi-geo-alt-fill text-gold"></i> 123 Artisan Valley, Scent City</li>
+                        <li class="d-flex gap-3 opacity-75 mb-3 justify-content-center justify-content-lg-start"><i class="bi bi-telephone-fill text-gold"></i> +1 (555) WAX-GLOW</li>
+                        <li class="d-flex gap-3 opacity-75 mb-3 justify-content-center justify-content-lg-start"><i class="bi bi-envelope-fill text-gold"></i> hello@candlestudio.com</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom mt-5 pt-4 border-top">
+                <p class="mb-0 opacity-50">&copy; 2026 LUMORA. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top -->
+    <a href="#" class="back-to-top" id="backToTop">
+        <i class="bi bi-arrow-up"></i>
+    </a>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/main.js"></script>
+</body>
+</html>

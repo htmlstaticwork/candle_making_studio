@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>The Studio Blog | Candle Making Studio</title>
+    <link rel="icon" type="image/svg+xml" href="assets/images/favicon.svg">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/dark-mode.css">
+    <link rel="stylesheet" href="assets/css/rtl.css">
+    <style>
+        .blog-card {
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            background: var(--card-bg);
+            box-shadow: 0 10px 30px var(--card-shadow);
+            transition: var(--transition-smooth);
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+        .blog-card:hover { transform: translateY(-10px); }
+        .blog-img { height: 250px; object-fit: cover; }
+        .sidebar-card { border-radius: var(--radius-md); padding: 25px; background: var(--secondary-color); margin-bottom: 30px; }
+
+        .blog-card-content {
+            padding: 1.5rem;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        .blog-card-content .btn-studio-secondary {
+            margin-top: auto;
+        }
+
+        /* Scent Alchemy Lab Section */
+        .scent-lab-wrapper {
+            background: linear-gradient(135deg, var(--bg-color) 0%, var(--secondary-color) 100%);
+            border-radius: var(--radius-lg);
+            padding: 4rem;
+            margin-bottom: 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+        .scent-lab-wrapper::before {
+            content: '';
+            position: absolute;
+            top: -20%;
+            left: -10%;
+            width: 50%;
+            height: 100%;
+            background: radial-gradient(circle, var(--glow-shadow) 0%, transparent 70%);
+            z-index: 0;
+            pointer-events: none;
+        }
+        .alchemy-card {
+            background: rgba(255, 255, 255, 0.4);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 20px;
+            padding: 30px;
+            text-align: center;
+            transition: var(--transition-smooth);
+            position: relative;
+            z-index: 1;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        [data-theme="dark"] .alchemy-card {
+            background: rgba(0, 0, 0, 0.2);
+            border-color: rgba(255, 255, 255, 0.05);
+        }
+        .alchemy-card:hover { 
+            background: rgba(255, 255, 255, 0.7);
+            transform: scale(1.05) translateY(-5px);
+            box-shadow: 0 20px 40px var(--glow-shadow);
+        }
+        [data-theme="dark"] .alchemy-card:hover {
+            background: var(--bg-color);
+            border-color: var(--accent-gold);
+        }
+        .alchemy-icon {
+            font-size: 2.5rem;
+            color: var(--accent-gold);
+            margin-bottom: 1.5rem;
+            transition: transform 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        .alchemy-card:hover .alchemy-icon {
+            transform: rotate(360deg) scale(1.2);
+        }
+
+        /* Curator's Choice Section */
+        .curator-section {
+            display: flex;
+            min-height: 600px;
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            margin-bottom: 2.5rem;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.1);
+        }
+        .curator-img-side {
+            flex: 1;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+        .curator-content-side {
+            flex: 1;
+            padding: 5rem;
+            background: var(--primary-color);
+            color: var(--secondary-color);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            position: relative;
+        }
+        .curator-tag {
+            font-family: var(--font-body);
+            font-weight: 700;
+            letter-spacing: 2px;
+            color: var(--accent-gold);
+            text-transform: uppercase;
+            margin-bottom: 1.5rem;
+            display: block;
+        }
+        .curator-title {
+            font-size: 3.5rem;
+            line-height: 1.1;
+            margin-bottom: 2rem;
+            font-family: var(--font-heading);
+            color: inherit !important;
+        }
+        .curator-content-side p {
+            color: inherit !important;
+            opacity: 0.8;
+        }
+        .curator-divider {
+            width: 60px;
+            height: 3px;
+            background: var(--accent-gold);
+            margin-bottom: 2rem;
+            transition: width 0.8s ease;
+        }
+        .curator-section:hover .curator-divider {
+            width: 150px;
+        }
+
+        @media (max-width: 991px) {
+            .curator-section { flex-direction: column; min-height: auto; }
+            .curator-img-side { height: 400px; }
+            .curator-content-side { padding: 3rem 2rem; }
+            .curator-title { font-size: 2.5rem; }
+            .scent-lab-wrapper { padding: 2rem 1.5rem; }
+        }
+
+        .badge-studio {
+            background-color: var(--accent-gold) !important;
+            color: #2C1A0E !important; /* Always dark for contrast against gold */
+            font-weight: 700;
+            padding: 6px 16px;
+            border-radius: 50px;
+            text-transform: uppercase;
+            font-size: 0.7rem;
+            letter-spacing: 0.5px;
+            display: inline-block;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="navbar navbar-expand-xl">
+        <div class="container-fluid container-custom">
+            <a class="navbar-brand" href="index.html">
+                <svg viewBox="0 0 40 40" fill="none" class="flame-icon">
+                    <path d="M12 30V18C12 16.8954 12.8954 16 14 16H18C19.1046 16 20 16.8954 20 18V30" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+                    <path d="M12 30H28" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+                    <line x1="16" y1="16" x2="16" y2="12" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+                    <path d="M16 4C16 4 19 7.5 19 10C19 11.6569 17.6569 13 16 13C14.3431 13 13 11.6569 13 10C13 7.5 16 4 16 4Z" fill="var(--accent-gold)">
+                        <animate attributeName="opacity" values="0.8;1;0.8" dur="2s" repeatCount="indefinite" />
+                    </path>
+                </svg>
+                LUMORA
+            </a>
+            
+            <button class="navbar-toggler border-0 p-0" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
+                <i class="bi bi-list fs-1" style="color: var(--text-color);"></i>
+            </button>
+
+            <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+                <div class="offcanvas-header">
+                    <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Menu</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                </div>
+                <div class="offcanvas-body">
+                    <ul class="navbar-nav ms-auto-logical align-items-xl-center">
+                        <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                        <li class="nav-item"><a class="nav-link" href="home-2.html">Home 2</a></li>
+                        <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+                        <li class="nav-item"><a class="nav-link" href="workshops.html">Workshops</a></li>
+                        <li class="nav-item"><a class="nav-link active" href="blog.html">Blog</a></li>
+                        <li class="nav-item"><a class="nav-link" href="pricing.html">Pricing</a></li>
+                        <li class="nav-item me-xl-5"><a class="nav-link" href="contact.html">Contact</a></li>
+                        <li class="nav-item mt-3 mt-xl-0 mx-xl-2">
+                            <a class="btn-studio-secondary py-2" href="login.html">Login</a>
+                        </li>
+                        <li class="nav-item ms-xl-3 d-flex gap-2 mt-3 mt-xl-0 justify-content-center">
+                            <a href="dashboard.html" class="dashboard-btn" title="Dashboard">
+                                <i class="bi bi-grid-3x3-gap-fill"></i>
+                            </a>
+                            <button id="theme-toggle" class="theme-toggle" title="Toggle Theme">
+                                <i class="bi bi-moon"></i>
+                            </button>
+                            <button id="rtl-toggle" class="rtl-toggle" title="Toggle RTL">
+                                <i class="bi bi-translate"></i>
+                            </button>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="container-custom py-5">
+        <div class="section-title reveal-on-scroll">
+            <p>Notes from the Studio</p>
+            <h1>The Candle Journal</h1>
+        </div>
+
+        <!-- Featured Post -->
+        <div class="row mb-5 reveal-on-scroll">
+            <div class="col-12">
+                <div class="blog-card flex-md-row d-flex flex-column align-items-stretch">
+                    <img src="assets/images/scent-throw-featured.png" class="col-md-7 blog-img" style="height: 450px; object-fit: cover;" alt="Mastering the Perfect Scent Throw">
+                    <div class="p-5 d-flex flex-column justify-content-center">
+                        <div class="mb-3"><span class="badge-studio">Technique</span></div>
+                        <h2 class="mb-3">Mastering the Perfect Scent Throw</h2>
+                        <p class="opacity-75 mb-4">Why does one candle fill a room while another barely whispers? Dive into the science of fragrance load and wax temperatures.</p>
+                        <div class="d-flex align-items-center gap-3 mb-4">
+                            <span class="small"><i class="bi bi-clock"></i> 8 Min Read</span>
+                            <span class="small"><i class="bi bi-person"></i> By Clara Meadows</span>
+                        </div>
+                        <a href="blog-details.html" class="btn-studio-primary align-self-start px-4">Read Full Article</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row g-5">
+            <!-- Blog Posts -->
+            <div class="col-lg-8">
+                <div class="row g-4">
+                    <div class="col-md-6 reveal-on-scroll">
+                        <div class="blog-card">
+                            <img src="assets/images/workshop-1.png" class="blog-img w-100">
+                            <div class="blog-card-content">
+                                <div class="mb-2"><span class="badge-studio">Tutorial</span></div>
+                                <h4 class="mb-3 mt-2">Drying Autumn Flowers for Wax Embedding</h4>
+                                <p class="small opacity-75 mb-4">Preserve the beauty of the season in your handcrafted creations.</p>
+                                <a href="blog-details.html" class="btn-studio-secondary w-100">Read More</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 reveal-on-scroll">
+                        <div class="blog-card">
+                            <img src="assets/images/hero-2.png" class="blog-img w-100">
+                            <div class="blog-card-content">
+                                <div class="mb-2"><span class="badge-studio">Sustainability</span></div>
+                                <h4 class="mb-3 mt-2">The Hidden Benefits of Soy vs. Paraffin</h4>
+                                <p class="small opacity-75 mb-4">Understanding the eco-impact of your material choices.</p>
+                                <a href="blog-details.html" class="btn-studio-secondary w-100">Read More</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sidebar -->
+            <div class="col-lg-4">
+                <div class="sidebar-card reveal-on-scroll shadow-sm">
+                    <h5 class="mb-4">Search Articles</h5>
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Search keywords...">
+                        <button class="btn btn-studio-primary"><i class="bi bi-search"></i></button>
+                    </div>
+                </div>
+                <div class="sidebar-card reveal-on-scroll shadow-sm">
+                    <h5 class="mb-4">Categories</h5>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="#" class="d-flex justify-content-between">Techniques <span>12</span></a></li>
+                        <li class="mb-2"><a href="#" class="d-flex justify-content-between">Tutorials <span>8</span></a></li>
+                        <li class="mb-2"><a href="#" class="d-flex justify-content-between">Sustainability <span>5</span></a></li>
+                        <li class="mb-2"><a href="#" class="d-flex justify-content-between">Lifestyle <span>10</span></a></li>
+                        <li class="mb-2"><a href="#" class="d-flex justify-content-between">Ingredients <span>7</span></a></li>
+                        <li class="mb-2"><a href="#" class="d-flex justify-content-between">Studio Secrets <span>15</span></a></li>
+                        <li class="mb-2"><a href="#" class="d-flex justify-content-between">Community <span>9</span></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- NEW SECTION 1: Scent Alchemy Lab -->
+        <section class="mt-4 reveal-on-scroll">
+            <div class="sccent-lab-wrapper">
+                <div class="scent-lab-wrapper">
+                    <div class="row align-items-center g-5">
+                        <div class="col-lg-5">
+                            <p class="text-gold fw-bold mb-2">Experimental Series</p>
+                            <h2 class="display-4 fw-800 mb-4">The Scent <span class="text-gold">Alchemy</span> Lab</h2>
+                            <p class="lead mb-4">Join our master blenders as they experiment with rare botanicals and unconventional molecules to create the next generation of olfactory experiences.</p>
+                            <a href="#" class="btn-studio-primary px-4">Start Experimenting</a>
+                        </div>
+                        <div class="col-lg-7">
+                            <div class="row g-4">
+                                <div class="col-md-6">
+                                    <div class="alchemy-card">
+                                        <i class="bi bi-droplet alchemy-icon"></i>
+                                        <h5>Fragrance Loading</h5>
+                                        <p class="small opacity-75 mb-0">Learn the exact science behind the scent load and why 10% isn't always the magic number.</p>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="alchemy-card">
+                                        <i class="bi bi-thermometer-half alchemy-icon"></i>
+                                        <h5>Thermal Stability</h5>
+                                        <p class="small opacity-75 mb-0">How different wax types react to environmental heat shifts throughout the seasons.</p>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="alchemy-card" style="transition-delay: 0.1s">
+                                        <i class="bi bi-flower1 alchemy-icon"></i>
+                                        <h5>Botanical Fusion</h5>
+                                        <p class="small opacity-75 mb-0">The art of infusing natural plant extracts directly into hot liquid wax columns.</p>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="alchemy-card" style="transition-delay: 0.1s">
+                                        <i class="bi bi-lightning alchemy-icon"></i>
+                                        <h5>Mantle Testing</h5>
+                                        <p class="small opacity-75 mb-0">Safety protocols and burn-rate analysis for industrial scale artisanal batches.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- NEW SECTION 2: The Curator's Choice -->
+        <section class="mt-0 reveal-on-scroll">
+            <div class="curator-section">
+                <div class="curator-img-side" style="background-image: url('assets/images/hero-2.png');">
+                    <div style="position: absolute; inset: 0; background: linear-gradient(90deg, transparent 50%, rgba(44, 26, 14, 0.1) 100%);"></div>
+                </div>
+                <div class="curator-content-side">
+                    <span class="curator-tag">Editorial Pick</span>
+                    <h2 class="curator-title">Autumn's First <span class="text-gold">Flame</span>.</h2>
+                    <div class="curator-divider"></div>
+                    <p class="lead mb-5" style="opacity: 0.85;">"A candle is a silent observer of our best moments. This month, we explore the deep, earthy tones of Sandalwood paired with the sharp memory of Cedarwood."</p>
+                    <div class="d-flex align-items-center gap-4">
+                        <img src="assets/images/hero-1.png" alt="Editorial" style="width: 65px; height: 65px; border-radius: 50%; border: 2px solid var(--accent-gold); object-fit: cover;">
+                        <div>
+                            <p class="mb-0 fw-bold">Clara Meadows</p>
+                            <p class="small opacity-50 mb-0">Master Curator & Founder</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container-custom">
+            <div class="row">
+                <div class="col-lg-4 col-12 text-center text-lg-start">
+                    <a class="footer-logo d-flex align-items-center justify-content-center justify-content-lg-start gap-2 mb-4" href="index.html">
+                        <svg viewBox="0 0 40 40" fill="none" class="flame-icon" style="width: 32px; height: 32px;">
+                            <path d="M12 30V18C12 16.8954 12.8954 16 14 16H18C19.1046 16 20 16.8954 20 18V30" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+                            <path d="M12 30H28" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+                            <line x1="16" y1="16" x2="16" y2="12" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+                            <path d="M16 4C16 4 19 7.5 19 10C19 11.6569 17.6569 13 16 13C14.3431 13 13 11.6569 13 10C13 7.5 16 4 16 4Z" fill="var(--accent-gold)">
+                                <animate attributeName="opacity" values="0.8;1;0.8" dur="2s" repeatCount="indefinite" />
+                            </path>
+                        </svg>
+                        LUMORA
+                    </a>
+                    <p class="opacity-75">Creating warm, handcrafted experiences that illuminate your life through the art of candle making.</p>
+                    <div class="d-flex gap-3 mt-4 justify-content-center justify-content-lg-start">
+                        <a href="#" class="footer-social-link"><i class="bi bi-instagram"></i></a>
+                        <a href="#" class="footer-social-link"><i class="bi bi-facebook"></i></a>
+                        <a href="#" class="footer-social-link"><i class="bi bi-pinterest"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-12 footer-links ms-auto-logical text-center text-lg-start mt-5 mt-lg-0">
+                    <h5>Quick Links</h5>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="workshops.html">Workshops</a></li>
+                        <li><a href="blog.html">Blog</a></li>
+                        <li><a href="pricing.html">Pricing</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-2 col-12 footer-links text-center text-lg-start mt-5 mt-lg-0">
+                    <h5>Support</h5>
+                    <ul>
+                        <li><a href="contact.html">Contact Us</a></li>
+                        <li><a href="#">FAQ</a></li>
+                        <li><a href="about.html">How It Works</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-4 col-12 text-center text-lg-start mt-5 mt-lg-0">
+                    <h5>Contact Info</h5>
+                    <ul class="footer-links list-unstyled">
+                        <li class="d-flex gap-3 opacity-75 mb-3 justify-content-center justify-content-lg-start"><i class="bi bi-geo-alt-fill text-gold"></i> 123 Artisan Valley, Scent City</li>
+                        <li class="d-flex gap-3 opacity-75 mb-3 justify-content-center justify-content-lg-start"><i class="bi bi-telephone-fill text-gold"></i> +1 (555) WAX-GLOW</li>
+                        <li class="d-flex gap-3 opacity-75 mb-3 justify-content-center justify-content-lg-start"><i class="bi bi-envelope-fill text-gold"></i> hello@candlestudio.com</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom mt-5 pt-4 border-top">
+                <p class="mb-0 opacity-50">&copy; 2026 LUMORA. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top -->
+    <a href="#" class="back-to-top" id="backToTop">
+        <i class="bi bi-arrow-up"></i>
+    </a>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/main.js"></script>
+</body>
+</html>

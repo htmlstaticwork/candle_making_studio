@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Workshops | Studio Candle</title>
+    <link rel="icon" type="image/svg+xml" href="assets/images/favicon.svg">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/dark-mode.css">
+    <style>
+        /* Section 1: Private Events (Asymmetrical) */
+        .private-events-section { padding: 100px 0; background: var(--secondary-color); color: var(--primary-color); overflow: hidden; }
+        .overlap-group { position: relative; padding: 40px; }
+        .overlap-img { 
+            width: 85%; 
+            border-radius: var(--radius-lg); 
+            z-index: 1; 
+            position: relative;
+            transform: rotate(-1deg);
+            transition: transform 0.8s ease;
+        }
+        .overlap-group:hover .overlap-img { transform: rotate(0); }
+        .overlap-card { 
+            position: absolute; 
+            right: 0; 
+            bottom: -20px; 
+            width: 55%; 
+            background: var(--card-bg); 
+            padding: 40px; 
+            border-radius: var(--radius-md); 
+            box-shadow: 0 30px 60px var(--card-shadow);
+            z-index: 2;
+            border: 1px solid rgba(212, 168, 83, 0.1);
+        }
+
+        /* Section 2: Seasonal (Fixed Background) */
+        .seasonal-banner { 
+            height: 65vh; 
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('assets/images/seasonal-display.png');
+            background-size: cover; 
+            background-position: center; 
+            background-attachment: fixed;
+            display: flex; align-items: center; justify-content: center; text-align: center; color: white;
+            position: relative;
+        }
+        .seasonal-content { position: relative; z-index: 5; }
+
+        .scent-lab-section { 
+            padding: 100px 0;
+            background-color: var(--secondary-color);
+            transition: background-color 0.5s ease;
+        }
+        .scent-lab-grid { 
+            display: grid; 
+            grid-template-columns: 1fr 1.5fr; 
+            gap: 50px; 
+            align-items: center; 
+        }
+        .reveal-card { 
+            background: var(--card-bg); 
+            padding: 35px; 
+            border-radius: var(--radius-lg); 
+            border-bottom: 4px solid transparent;
+            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 10px 20px var(--card-shadow);
+        }
+        .reveal-card:hover { 
+            transform: translateY(-15px); 
+            border-bottom-color: var(--accent-gold);
+            background: var(--primary-color);
+            color: var(--secondary-color);
+        }
+        .reveal-card:hover h4, .reveal-card:hover p {
+            color: inherit !important;
+        }
+
+        @media (max-width: 991px) {
+            .overlap-img { width: 100%; }
+            .overlap-card { position: static; width: 100%; margin-top: 20px; }
+            .scent-lab-grid { grid-template-columns: 1fr; }
+            .seasonal-banner { height: 40vh; background-attachment: scroll; }
+        }
+
+        .badge-studio {
+            background-color: var(--accent-gold) !important;
+            color: #2C1A0E !important; /* Always dark for contrast against gold */
+            font-weight: 700;
+            padding: 6px 16px;
+            border-radius: 50px;
+            text-transform: uppercase;
+            font-size: 0.7rem;
+            letter-spacing: 0.5px;
+            display: inline-block;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="navbar navbar-expand-xl">
+        <div class="container-fluid container-custom">
+            <a class="navbar-brand" href="index.html">
+                <svg viewBox="0 0 40 40" fill="none" class="flame-icon">
+                    <path d="M12 30V18C12 16.8954 12.8954 16 14 16H18C19.1046 16 20 16.8954 20 18V30" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+                    <path d="M12 30H28" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+                    <line x1="16" y1="16" x2="16" y2="12" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+                    <path d="M16 4C16 4 19 7.5 19 10C19 11.6569 17.6569 13 16 13C14.3431 13 13 11.6569 13 10C13 7.5 16 4 16 4Z" fill="var(--accent-gold)">
+                        <animate attributeName="opacity" values="0.8;1;0.8" dur="2s" repeatCount="indefinite" />
+                    </path>
+                </svg>
+                LUMORA
+            </a>
+            
+            <button class="navbar-toggler border-0 p-0" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
+                <i class="bi bi-list fs-1" style="color: var(--text-color);"></i>
+            </button>
+
+            <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+                <div class="offcanvas-header">
+                    <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Menu</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                </div>
+                <div class="offcanvas-body">
+                    <ul class="navbar-nav ms-auto-logical align-items-xl-center">
+                        <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                        <li class="nav-item"><a class="nav-link" href="home-2.html">Home 2</a></li>
+                        <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+                        <li class="nav-item"><a class="nav-link active" href="workshops.html">Workshops</a></li>
+                        <li class="nav-item"><a class="nav-link" href="blog.html">Blog</a></li>
+                        <li class="nav-item"><a class="nav-link" href="pricing.html">Pricing</a></li>
+                        <li class="nav-item me-xl-5"><a class="nav-link" href="contact.html">Contact</a></li>
+                        <li class="nav-item mt-3 mt-xl-0 mx-xl-2">
+                            <a class="btn-studio-secondary py-2" href="login.html">Login</a>
+                        </li>
+                        <li class="nav-item ms-xl-3 d-flex gap-2 mt-3 mt-xl-0 justify-content-center">
+                            <a href="dashboard.html" class="dashboard-btn" title="Dashboard">
+                                <i class="bi bi-grid-3x3-gap-fill"></i>
+                            </a>
+                            <button id="theme-toggle" class="theme-toggle" title="Toggle Theme">
+                                <i class="bi bi-moon"></i>
+                            </button>
+                            <button id="rtl-toggle" class="rtl-toggle" title="Toggle RTL">
+                                <i class="bi bi-translate"></i>
+                            </button>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- Curriculum Grid -->
+        <section class="py-5">
+            <div class="container-custom">
+                <div class="section-title reveal-on-scroll">
+                    <p class="text-gold fw-bold">Our Curriculum</p>
+                    <h1 class="display-3 fw-800">Artisan Workshops</h1>
+                </div>
+                <div class="row g-4 workshop-grid">
+                    <div class="col-lg-4 reveal-on-scroll">
+                        <div class="workshop-card">
+                            <img src="assets/images/workshop-1.png" alt="Workshop 1" class="img-fluid mb-4 w-100 rounded-4">
+                            <div class="d-flex justify-content-between mb-3 align-items-center">
+                                <span class="badge-studio">Beginner</span>
+                                <span class="text-gold fw-bold">2 Hours</span>
+                            </div>
+                            <h4 class="mb-3">Scented Soy Basics</h4>
+                            <p class="opacity-75 mb-4">Master the foundational techniques of container candle making with natural soy wax.</p>
+                            <a href="#" class="btn-studio-primary w-100">Learn More</a>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 reveal-on-scroll" style="transition-delay: 0.1s">
+                        <div class="workshop-card">
+                            <img src="assets/images/workshop-2.png" alt="Workshop 2" class="img-fluid mb-4 w-100 rounded-4">
+                            <div class="d-flex justify-content-between mb-3 align-items-center">
+                                <span class="badge-studio">Intermediate</span>
+                                <span class="text-gold fw-bold">3 Hours</span>
+                            </div>
+                            <h4 class="mb-3">Beeswax Sculpting</h4>
+                            <p class="opacity-75 mb-4">Learn specialized artisanal techniques for forming elegant pillar candles.</p>
+                            <a href="#" class="btn-studio-primary w-100">Learn More</a>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 reveal-on-scroll" style="transition-delay: 0.2s">
+                        <div class="workshop-card">
+                            <img src="assets/images/workshop-3.png" alt="Workshop 3" class="img-fluid mb-4 w-100 rounded-4">
+                            <div class="d-flex justify-content-between mb-3 align-items-center">
+                                <span class="badge-studio">Advanced</span>
+                                <span class="text-gold fw-bold">4 Hours</span>
+                            </div>
+                            <h4 class="mb-3">Advanced Aromatherapy</h4>
+                            <p class="opacity-75 mb-4">Deep dive into complex fragrance notes and luxury oil blending.</p>
+                            <a href="#" class="btn-studio-primary w-100">Learn More</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 1: Private Events -->
+        <section class="private-events-section reveal-on-scroll">
+            <div class="container-custom">
+                <div class="row align-items-center g-5">
+                    <div class="col-lg-7">
+                        <div class="overlap-group">
+                            <img src="assets/images/workshop-corporate-unique.png" alt="Corporate Event" class="overlap-img shadow-lg">
+                           
+                        </div>
+                    </div>
+                    <div class="col-lg-5">
+                        <span class="text-gold fw-bold text-uppercase ls-2">Exclusive</span>
+                        <h2 class="display-4 fw-800 my-4">Private <span class="text-gold">Sanctuaries</span></h2>
+                        <p class="mb-5 opacity-75">From bridal showers to corporate retreats, we transform our studio into your personal aromatic laboratory.</p>
+                        <div class="d-flex flex-column gap-3 mb-5">
+                            <div class="d-flex align-items-center gap-3">
+                                <div class="bg-primary bg-opacity-10 p-2 rounded-circle"><i class="bi bi-palette text-gold"></i></div>
+                                <span>Custom Labelling Services</span>
+                            </div>
+                            <div class="d-flex align-items-center gap-3">
+                                <div class="bg-primary bg-opacity-10 p-2 rounded-circle"><i class="bi bi-cup-hot text-gold"></i></div>
+                                <span>Artisanal Refreshments</span>
+                            </div>
+                        </div>
+                        <a href="#" class="btn-studio-primary btn-lg px-5">Inquire Now</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 2: Seasonal Banner -->
+        <section class="seasonal-banner reveal-on-scroll" style="background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1541411132646-f94d306b3e21?auto=format&fit=crop&q=80&w=800');">
+            <div class="seasonal-content container">
+                <span class="text-gold fw-bold text-uppercase ls-3 mb-3 d-block">Coming Soon</span>
+                <h2 class="display-2 fw-800 mb-4">Autumn <span class="text-gold">Botanicals</span></h2>
+                <p class="lead mb-0 mx-auto" style="max-width: 600px;">A masterclass in infusing fall harvests into long-burning luxury wax formulas.</p>
+            </div>
+        </section>
+
+        <!-- Section 3: Scent Lab -->
+        <section class="scent-lab-section">
+            <div class="container-custom">
+                <div class="scent-lab-grid">
+                    <div class="reveal-on-scroll">
+                        <img src="assets/images/scent-bottles.png" alt="Scent Lab" class="img-fluid rounded-5 shadow-xl">
+                    </div>
+                    <div class="d-flex flex-column gap-4">
+                        <div class="reveal-card reveal-on-scroll">
+                            <h4 class="mb-3">Olfactory Architecture</h4>
+                            <p class="mb-0 opacity-75">Understand how top, heart, and base notes interact to create an evolving room-filling experience.</p>
+                        </div>
+                        <div class="reveal-card reveal-on-scroll" style="transition-delay: 0.1s">
+                            <h4 class="mb-3">Therapeutic Blending</h4>
+                            <p class="mb-0 opacity-75">Explore the science of aromatherapy and how specific botanical oils impact mood and focus.</p>
+                        </div>
+                        <div class="reveal-card reveal-on-scroll" style="transition-delay: 0.2s">
+                            <h4 class="mb-3">Sustainable Sourcing</h4>
+                            <p class="mb-0 opacity-75">Learn about the ethical journey of our oils from small-scale farms to our studio laboratory.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container-custom">
+            <div class="row">
+                <div class="col-lg-4 col-12 text-center text-lg-start">
+                    <a class="footer-logo d-flex align-items-center justify-content-center justify-content-lg-start gap-2 mb-4" href="index.html">
+                        <svg viewBox="0 0 40 40" fill="none" class="flame-icon" style="width: 32px; height: 32px;">
+                            <path d="M12 30V18C12 16.8954 12.8954 16 14 16H18C19.1046 16 20 16.8954 20 18V30" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+                            <path d="M12 30H28" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+                            <line x1="16" y1="16" x2="16" y2="12" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+                            <path d="M16 4C16 4 19 7.5 19 10C19 11.6569 17.6569 13 16 13C14.3431 13 13 11.6569 13 10C13 7.5 16 4 16 4Z" fill="var(--accent-gold)">
+                                <animate attributeName="opacity" values="0.8;1;0.8" dur="2s" repeatCount="indefinite" />
+                            </path>
+                        </svg>
+                        LUMORA
+                    </a>
+                    <p class="opacity-75">Creating warm, handcrafted experiences that illuminate your life through the art of candle making.</p>
+                    <div class="d-flex gap-3 mt-4 justify-content-center justify-content-lg-start">
+                        <a href="#" class="footer-social-link"><i class="bi bi-instagram"></i></a>
+                        <a href="#" class="footer-social-link"><i class="bi bi-facebook"></i></a>
+                        <a href="#" class="footer-social-link"><i class="bi bi-pinterest"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-12 footer-links ms-auto-logical text-center text-lg-start mt-5 mt-lg-0">
+                    <h5>Quick Links</h5>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="workshops.html">Workshops</a></li>
+                        <li><a href="blog.html">Blog</a></li>
+                        <li><a href="pricing.html">Pricing</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-2 col-12 footer-links text-center text-lg-start mt-5 mt-lg-0">
+                    <h5>Support</h5>
+                    <ul>
+                        <li><a href="contact.html">Contact Us</a></li>
+                        <li><a href="#">FAQ</a></li>
+                        <li><a href="about.html">How It Works</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-4 col-12 text-center text-lg-start mt-5 mt-lg-0">
+                    <h5>Contact Info</h5>
+                    <ul class="footer-links list-unstyled">
+                        <li class="d-flex gap-3 opacity-75 mb-3 justify-content-center justify-content-lg-start"><i class="bi bi-geo-alt-fill text-gold"></i> 123 Artisan Valley, Scent City</li>
+                        <li class="d-flex gap-3 opacity-75 mb-3 justify-content-center justify-content-lg-start"><i class="bi bi-telephone-fill text-gold"></i> +1 (555) WAX-GLOW</li>
+                        <li class="d-flex gap-3 opacity-75 mb-3 justify-content-center justify-content-lg-start"><i class="bi bi-envelope-fill text-gold"></i> hello@candlestudio.com</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom mt-5 pt-4 border-top">
+                <p class="mb-0 opacity-50">&copy; 2026 LUMORA. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top -->
+    <a href="#" class="back-to-top" id="backToTop">
+        <i class="bi bi-arrow-up"></i>
+    </a>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/main.js"></script>
+</body>
+</html>

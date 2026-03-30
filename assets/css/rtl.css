@@ -1,0 +1,62 @@
+/* 
+   Candle Making Studio - RTL Adjustments
+*/
+
+[dir="rtl"] {
+    --direction: rtl;
+    --start: right;
+    --end: left;
+    
+    /* Logical spacing for elements that don't support it natively yet */
+    text-align: right;
+}
+
+[dir="rtl"] .navbar-brand {
+    margin-right: 0 !important;
+    margin-left: 1rem !important;
+}
+
+[dir="rtl"] .ms-auto {
+    margin-right: auto !important;
+    margin-left: 0 !important;
+}
+
+[dir="rtl"] .me-auto {
+    margin-left: auto !important;
+    margin-right: 0 !important;
+}
+
+/* Animations that need inverting */
+[dir="rtl"] .slide-in { 
+    transform: translateX(40px); 
+}
+
+[dir="ltr"] .slide-in { 
+    transform: translateX(-40px); 
+}
+
+/* Offcanvas slides from left in RTL */
+[dir="rtl"] .offcanvas-end {
+    inset-inline-end: auto;
+    inset-inline-start: 0;
+    transform: translateX(-100%);
+}
+
+[dir="rtl"] .offcanvas-end.show {
+    transform: translateX(0);
+}
+
+/* Icons that need flipping */
+[dir="rtl"] .bi-arrow-right::before {
+    content: "\F12C"; /* arrow-left icon in Bootstrap Icons */
+}
+
+/* Dashboard sidebar RTL */
+[dir="rtl"] .sidebar {
+    border-inline-end: none;
+    border-inline-start: 1px solid rgba(44, 26, 14, 0.1);
+}
+
+[dir="rtl"] .sidebar-item {
+    flex-direction: row-reverse;
+}
