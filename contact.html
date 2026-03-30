@@ -168,6 +168,46 @@
             padding: 30px 0; /* Creates space for the shadow */
         }
 
+        @media (max-width: 575.98px) {
+            .contact-form-heading {
+                text-align: center;
+            }
+
+            .contact-form-actions {
+                text-align: center;
+            }
+
+            .contact-info-card {
+                padding: 28px 20px;
+            }
+
+            .studio-detail-box {
+                gap: 14px;
+                padding: 16px;
+                margin-bottom: 16px;
+            }
+
+            .studio-detail-icon {
+                width: 44px;
+                height: 44px;
+                border-radius: 14px;
+            }
+
+            .studio-detail-box h6 {
+                font-size: 1rem;
+            }
+
+            .contact-social-links {
+                gap: 0.7rem;
+                font-size: 1.6rem;
+            }
+
+            .contact-social-links a {
+                width: 44px;
+                height: 44px;
+            }
+        }
+
         @media (max-width: 991px) {
             .delivery-bg-shape { display: none; }
         }
@@ -236,7 +276,7 @@
 
             <div class="row g-5">
                 <div class="col-lg-7 reveal-on-scroll">
-                    <h3 class="fw-bold mb-4">Send a Message</h3>
+                    <h3 class="fw-bold mb-4 contact-form-heading">Send a Message</h3>
                     <p class="mb-5 opacity-75">Connect with our artisans for premium workshops, custom corporate gifting, or wholesale inquiries. We respond within 24 hours.</p>
 
                     <form class="row g-4 contact-form">
@@ -247,7 +287,7 @@
                             <select class="form-control px-4 py-3"><option>Workshop Inquiry</option><option>Custom Orders</option><option>Supplies Question</option><option>Other</option></select>
                         </div>
                         <div class="col-12"><label class="form-label fw-bold small">Your Message</label><textarea class="form-control px-4 py-3" rows="5" placeholder="How can we help illuminate your project?"></textarea></div>
-                        <div class="col-12"><button class="btn-studio-primary btn-lg px-5 py-3">Send Signal &rarr;</button></div>
+                        <div class="col-12 contact-form-actions"><button class="btn-studio-primary btn-lg px-5 py-3">Send Signal &rarr;</button></div>
                     </form>
                 </div>
 
