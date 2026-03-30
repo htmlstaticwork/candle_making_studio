@@ -1,8 +1,8 @@
 <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <!-- Candle Base - High Contrast Black -->
-    <path d="M12 30V18C12 16.8954 12.8954 16 14 16H18C19.1046 16 20 16.8954 20 18V30" stroke="#000000" stroke-width="3" stroke-linecap="round"/>
-    <path d="M12 30H28" stroke="#000000" stroke-width="3" stroke-linecap="round"/>
-    <line x1="16" y1="16" x2="16" y2="12" stroke="#000000" stroke-width="3" stroke-linecap="round"/>
+    <!-- Candle Base - Website Dark Brown -->
+    <path d="M12 30V18C12 16.8954 12.8954 16 14 16H18C19.1046 16 20 16.8954 20 18V30" stroke="#2C1A0E" stroke-width="3" stroke-linecap="round"/>
+    <path d="M12 30H28" stroke="#2C1A0E" stroke-width="3" stroke-linecap="round"/>
+    <line x1="16" y1="16" x2="16" y2="12" stroke="#2C1A0E" stroke-width="3" stroke-linecap="round"/>
     <!-- Artisanal Flame - Remains Signature Gold -->
     <path d="M16 4C16 4 19 7.5 19 10C19 11.6569 17.6569 13 16 13C14.3431 13 13 11.6569 13 10C13 7.5 16 4 16 4Z" fill="#D4A853"/>
 </svg>

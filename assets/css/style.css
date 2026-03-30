@@ -258,6 +258,14 @@ header:not(.top-bar).header-scrolled {
     transform: scaleX(1);
 }
 
+.nav-link.active {
+    color: var(--accent-gold) !important;
+}
+
+.nav-link.active::after {
+    transform: scaleX(1);
+}
+
 .theme-toggle, .rtl-toggle, .dashboard-btn {
     background: transparent;
     border: none;

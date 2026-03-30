@@ -13,9 +13,16 @@
         body { background: var(--secondary-color); display: flex; align-items: center; justify-content: center; min-height: 100vh; padding: 40px 20px; flex-direction: column; }
         .auth-card { background: var(--card-bg); border-radius: var(--radius-lg); padding: 50px; width: 100%; max-width: 520px; box-shadow: 0 15px 40px var(--card-shadow); position: relative; margin: auto; }
         .auth-toggles { position: absolute; top: 20px; inset-inline-end: 20px; }
+        .social-btn { border: 1px solid rgba(44, 26, 14, 0.1); border-radius: var(--radius-sm); padding: 10px; flex: 1; display: flex; align-items: center; justify-content: center; gap: 8px; transition: var(--transition-smooth); font-weight: 500; font-size: 0.9rem; }
+        .social-btn:hover { background: rgba(44, 26, 14, 0.05); }
+        .auth-card a.text-gold:hover { color: #b68d40 !important; text-decoration: underline; text-underline-offset: 3px; }
+        .auth-divider-label { background: var(--card-bg); color: rgba(44, 26, 14, 0.5); line-height: 1; }
         
         @media (max-width: 576px) {
             .auth-card { padding: 30px 20px; }
+            .auth-toggles { top: 14px; inset-inline-end: 14px; }
+            .auth-card .text-center.mb-5 { padding-top: 20px; }
+            .social-btn { font-size: 0.8rem; padding: 8px; }
         }
     </style>
 </head>
@@ -42,10 +49,7 @@
         </div>
 
         <form>
-            <div class="row g-3 mb-4">
-                <div class="col-6"><label class="form-label fw-bold small">First Name</label><input type="text" class="form-control" required></div>
-                <div class="col-6"><label class="form-label fw-bold small">Last Name</label><input type="text" class="form-control" required></div>
-            </div>
+            <div class="mb-4"><label class="form-label fw-bold small">Name</label><input type="text" class="form-control" required></div>
             <div class="mb-4"><label class="form-label fw-bold small">Email Address</label><input type="email" class="form-control" placeholder="hello@artisan.com" required></div>
             <div class="mb-4"><label class="form-label fw-bold small">Password</label><input type="password" class="form-control" required></div>
             <div class="mb-4"><label class="form-label fw-bold small">Confirm Password</label><input type="password" class="form-control" required></div>
@@ -57,6 +61,17 @@
 
             <button type="submit" class="btn-studio-primary w-100 py-3 mb-4">Create Account</button>
         </form>
+
+        <div class="text-center mb-4 position-relative">
+            <hr class="opacity-10">
+            <span class="position-absolute top-50 start-50 translate-middle px-3 small auth-divider-label">or continue with</span>
+        </div>
+
+        <div class="d-flex gap-3 mb-5">
+            <button class="social-btn"><i class="bi bi-google text-danger"></i> Google</button>
+            <button class="social-btn"><i class="bi bi-apple"></i> Apple</button>
+            <button class="social-btn"><i class="bi bi-facebook text-primary"></i> Facebook</button>
+        </div>
 
         <p class="text-center small mb-0">Already have an account? <a href="login.html" class="text-gold fw-bold">Sign In</a></p>
     </div>

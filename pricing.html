@@ -10,6 +10,12 @@
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="assets/css/dark-mode.css">
     <link rel="stylesheet" href="assets/css/rtl.css">
+    <style>
+        [data-theme="light"] .gift-banner-card h2,
+        [data-theme="light"] .gift-banner-card h4 {
+            color: #F5E6D3 !important;
+        }
+    </style>
 </head>
 <body>
     <!-- Header -->
@@ -99,7 +105,7 @@
             <!-- Studio (Popular) -->
             <div class="col-lg-4 reveal-on-scroll" style="transition-delay: 0.1s">
                 <div class="workshop-card h-100 p-5 text-center border-gold d-flex flex-column" style="border-width: 2px;">
-                    <span class="badge bg-gold text-white position-absolute top-0 start-50 translate-middle px-4 py-2">MOST POPULAR</span>
+                    <span class="badge text-white position-absolute top-0 start-50 translate-middle px-4 py-2" style="background-color: var(--accent-gold); z-index: 1;">MOST POPULAR</span>
                     <h3 class="mb-2">Studio</h3>
                     <p class="opacity-75 small mb-4">For the regular creator</p>
                     <div class="display-4 fw-800 mb-4 text-gold">$<span class="price-amount" data-monthly="59" data-annual="49">59</span><span class="fs-6 opacity-50">/mo</span></div>

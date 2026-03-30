@@ -18,6 +18,77 @@
             height: 100%; 
             border: 1px solid rgba(212, 168, 83, 0.1);
         }
+
+        .studio-detail-box {
+            display: flex;
+            align-items: flex-start;
+            gap: 18px;
+            padding: 20px;
+            margin-bottom: 18px;
+            border-radius: var(--radius-md);
+            background: rgba(255, 255, 255, 0.45);
+            border: 1px solid rgba(212, 168, 83, 0.18);
+            box-shadow: 0 10px 24px rgba(44, 26, 14, 0.06);
+        }
+
+        .studio-detail-icon {
+            width: 54px;
+            height: 54px;
+            border-radius: 16px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            background: rgba(212, 168, 83, 0.12);
+        }
+
+        .studio-detail-box h6 {
+            margin-bottom: 0.35rem;
+        }
+
+        .studio-detail-box p {
+            margin-bottom: 0;
+        }
+
+        [data-theme="dark"] .studio-detail-box {
+            background: linear-gradient(135deg, rgba(245, 230, 211, 0.08), rgba(245, 230, 211, 0.14));
+            border-color: rgba(212, 168, 83, 0.14);
+            box-shadow: 0 14px 32px rgba(0, 0, 0, 0.28);
+        }
+
+        [data-theme="dark"] .studio-detail-icon {
+            background: rgba(212, 168, 83, 0.16);
+            border: 1px solid rgba(212, 168, 83, 0.16);
+        }
+
+        [data-theme="dark"] .contact-form .form-control {
+            background: rgba(245, 230, 211, 0.02);
+            color: #F5E6D3 !important;
+            border-color: rgba(245, 230, 211, 0.14);
+        }
+
+        [data-theme="dark"] .contact-form .form-control::placeholder {
+            color: rgba(245, 230, 211, 0.4);
+            opacity: 1;
+        }
+
+        [data-theme="dark"] .contact-form select.form-control {
+            background-color: #24160D;
+            color: #F5E6D3 !important;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none'%3E%3Cpath d='M4 6l4 4 4-4' stroke='%23F5E6D3' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 1rem center;
+            background-size: 14px 14px;
+            padding-right: 3rem;
+        }
+
+        [data-theme="dark"] .contact-form select.form-control option {
+            background-color: #24160D;
+            color: #F5E6D3;
+        }
         
         .map-container { 
             height: 450px; 
@@ -132,7 +203,7 @@
                     <h3 class="fw-bold mb-4">Send a Message</h3>
                     <p class="mb-5 opacity-75">Connect with our artisans for premium workshops, custom corporate gifting, or wholesale inquiries. We respond within 24 hours.</p>
 
-                    <form class="row g-4">
+                    <form class="row g-4 contact-form">
                         <div class="col-md-6"><label class="form-label fw-bold small">First Name</label><input type="text" class="form-control px-4 py-3" placeholder="Jane" required></div>
                         <div class="col-md-6"><label class="form-label fw-bold small">Last Name</label><input type="text" class="form-control px-4 py-3" placeholder="Doe"></div>
                         <div class="col-md-12"><label class="form-label fw-bold small">Email Address</label><input type="email" class="form-control px-4 py-3" placeholder="jane@example.com" required></div>
@@ -147,22 +218,28 @@
                 <div class="col-lg-5 reveal-on-scroll" style="transition-delay: 0.1s">
                     <div class="contact-info-card shadow-lg">
                         <h4 class="mb-5 fw-bold text-gold">Studio Details</h4>
-                        <div class="d-flex gap-4 mb-5">
-                            <i class="bi bi-geo-alt fs-2 text-gold"></i>
+                        <div class="studio-detail-box">
+                            <span class="studio-detail-icon">
+                                <i class="bi bi-geo-alt fs-4 text-gold"></i>
+                            </span>
                             <div>
                                 <h6 class="mb-1 fw-bold">Artisan Hub</h6>
                                 <p class="small opacity-75">123 Artisan Valley, Scent City 90210</p>
                             </div>
                         </div>
-                        <div class="d-flex gap-4 mb-5">
-                            <i class="bi bi-telephone fs-2 text-gold"></i>
+                        <div class="studio-detail-box">
+                            <span class="studio-detail-icon">
+                                <i class="bi bi-telephone fs-4 text-gold"></i>
+                            </span>
                             <div>
                                 <h6 class="mb-1 fw-bold">Hotline</h6>
                                 <p class="small opacity-75">+1 (555) WAX-GLOW</p>
                             </div>
                         </div>
-                        <div class="d-flex gap-4 mb-5">
-                            <i class="bi bi-clock fs-2 text-gold"></i>
+                        <div class="studio-detail-box">
+                            <span class="studio-detail-icon">
+                                <i class="bi bi-clock fs-4 text-gold"></i>
+                            </span>
                             <div>
                                 <h6 class="mb-1 fw-bold">Open Studio</h6>
                                 <p class="small opacity-75">Mon - Sat: 10:00 AM - 7:00 PM</p>

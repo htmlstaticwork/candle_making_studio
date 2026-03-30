@@ -24,6 +24,13 @@
         .blog-card:hover { transform: translateY(-10px); }
         .blog-img { height: 250px; object-fit: cover; }
         .sidebar-card { border-radius: var(--radius-md); padding: 25px; background: var(--secondary-color); margin-bottom: 30px; }
+        .sidebar-card .input-group { flex-wrap: nowrap; }
+        .sidebar-card .input-group .form-control { min-width: 0; }
+        .sidebar-card .input-group .btn-studio-primary {
+            padding-inline: 1rem;
+            min-width: 56px;
+            flex: 0 0 auto;
+        }
 
         .blog-card-content {
             padding: 1.5rem;
@@ -168,6 +175,18 @@
             letter-spacing: 0.5px;
             display: inline-block;
         }
+
+        @media (max-width: 991px) {
+            .sidebar-card .input-group .form-control {
+                font-size: 0.9rem;
+                padding-inline: 0.9rem;
+            }
+
+            .sidebar-card .input-group .btn-studio-primary {
+                min-width: 52px;
+                padding-inline: 0.85rem;
+            }
+        }
     </style>
 </head>
 <body>
@@ -251,7 +270,7 @@
 
         <div class="row g-5">
             <!-- Blog Posts -->
-            <div class="col-lg-8">
+            <div class="col-lg-8 order-2 order-lg-1">
                 <div class="row g-4">
                     <div class="col-md-6 reveal-on-scroll">
                         <div class="blog-card">
@@ -279,7 +298,7 @@
             </div>
 
             <!-- Sidebar -->
-            <div class="col-lg-4">
+            <div class="col-lg-4 order-1 order-lg-2">
                 <div class="sidebar-card reveal-on-scroll shadow-sm">
                     <h5 class="mb-4">Search Articles</h5>
                     <div class="input-group">

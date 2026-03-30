@@ -27,8 +27,53 @@
         .metric-card { padding: 20px; border-radius: var(--radius-md); background: var(--card-bg); border: 1px solid rgba(44, 26, 14, 0.05); box-shadow: 0 4px 12px var(--card-shadow); transition: transform 0.3s ease; height: 100%; }
         .metric-card:hover { transform: translateY(-5px); }
         .metric-icon { width: 44px; height: 44px; background: var(--secondary-color); color: var(--accent-gold); border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 1.25rem; }
+        .recommended-card { display: flex; flex-direction: column; }
+        .recommended-card p { flex-grow: 1; }
+        .recommended-card .btn { margin-top: auto; }
 
         .search-wrapper { position: relative; }
+
+        [data-theme="dark"] .search-wrapper .form-control {
+            color: #F5E6D3 !important;
+        }
+
+        [data-theme="dark"] .search-wrapper .form-control::placeholder {
+            color: rgba(245, 230, 211, 0.42);
+            opacity: 1;
+        }
+
+        .sidebar-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+        }
+
+        .sidebar-close-btn {
+            border: 0 !important;
+            background: transparent !important;
+            box-shadow: none !important;
+            padding: 0 !important;
+            color: var(--text-color) !important;
+            line-height: 1;
+        }
+
+        .dashboard-sidebar-toggle {
+            border: 0 !important;
+            background: transparent !important;
+            box-shadow: none !important;
+            padding: 0 !important;
+            border-radius: 0 !important;
+            color: var(--text-color) !important;
+        }
+
+        .dashboard-sidebar-toggle:hover,
+        .dashboard-sidebar-toggle:focus,
+        .dashboard-sidebar-toggle:active {
+            background: transparent !important;
+            box-shadow: none !important;
+            color: var(--text-color) !important;
+        }
 
         #bookings .btn.btn-studio-primary:hover {
             background-color: var(--primary-color);
@@ -63,17 +108,22 @@
     <div class="dashboard-container">
         <!-- Sidebar -->
         <aside class="sidebar">
-            <a class="navbar-brand mb-0 fs-3" href="index.html">
-                <svg viewBox="0 0 40 40" fill="none" class="flame-icon">
-                    <path d="M12 30V18C12 16.8954 12.8954 16 14 16H18C19.1046 16 20 16.8954 20 18V30" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
-                    <path d="M12 30H28" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
-                    <line x1="16" y1="16" x2="16" y2="12" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
-                    <path d="M16 4C16 4 19 7.5 19 10C19 11.6569 17.6569 13 16 13C14.3431 13 13 11.6569 13 10C13 7.5 16 4 16 4Z" fill="var(--accent-gold)">
-                        <animate attributeName="opacity" values="0.8;1;0.8" dur="2s" repeatCount="indefinite" />
-                    </path>
-                </svg>
-                LUMORA
-            </a>
+            <div class="sidebar-header">
+                <a class="navbar-brand mb-0 fs-3" href="index.html">
+                    <svg viewBox="0 0 40 40" fill="none" class="flame-icon">
+                        <path d="M12 30V18C12 16.8954 12.8954 16 14 16H18C19.1046 16 20 16.8954 20 18V30" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+                        <path d="M12 30H28" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+                        <line x1="16" y1="16" x2="16" y2="12" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+                        <path d="M16 4C16 4 19 7.5 19 10C19 11.6569 17.6569 13 16 13C14.3431 13 13 11.6569 13 10C13 7.5 16 4 16 4Z" fill="var(--accent-gold)">
+                            <animate attributeName="opacity" values="0.8;1;0.8" dur="2s" repeatCount="indefinite" />
+                        </path>
+                    </svg>
+                    LUMORA
+                </a>
+                <button class="btn d-lg-none sidebar-close-btn" onclick="document.querySelector('.sidebar').classList.remove('show')" aria-label="Close menu">
+                    <i class="bi bi-x-lg fs-4"></i>
+                </button>
+            </div>
             
             <nav class="sidebar-nav">
                 <a href="#" class="sidebar-item active" data-target="overview"><i class="bi bi-house-door"></i> Overview</a>
@@ -94,7 +144,7 @@
         <main class="main-content">
             <header class="top-bar">
                 <div class="d-flex align-items-center gap-3 top-bar-left">
-                    <button class="btn btn-studio-secondary d-lg-none" onclick="document.querySelector('.sidebar').classList.toggle('show')"><i class="bi bi-list fs-4"></i></button>
+                    <button class="btn d-lg-none dashboard-sidebar-toggle" onclick="document.querySelector('.sidebar').classList.toggle('show')"><i class="bi bi-list fs-4"></i></button>
                 </div>
 
                 <div class="search-wrapper ms-md-3 me-md-auto">
@@ -173,7 +223,7 @@
                 <h4 class="mb-4">Recommended for You</h4>
                 <div class="row g-4">
                     <div class="col-md-4">
-                        <div class="workshop-card">
+                        <div class="workshop-card recommended-card">
                             <img src="assets/images/workshop-2.png" class="img-fluid rounded mb-3 w-100">
                             <h6>Advanced Wax Mixing</h6>
                             <p class="small opacity-75">Perfect next step for you.</p>
@@ -181,7 +231,7 @@
                         </div>
                     </div>
                     <div class="col-md-4">
-                        <div class="workshop-card">
+                        <div class="workshop-card recommended-card">
                             <img src="assets/images/hero-2.png" class="img-fluid rounded mb-3 w-100">
                             <h6>Wick Optimization</h6>
                             <p class="small opacity-75">Master consistent burning.</p>
@@ -204,9 +254,8 @@
                         <h5 class="mb-1 small fw-bold">Scented Soy Basics</h5>
                         <p class="small opacity-50 mb-0"><i class="bi bi-calendar"></i> May 12, 2024</p>
                     </div>
-                    <div class="col-md-2"><span class="badge bg-secondary text-primary">Confirmed</span></div>
+                    <div class="col-md-2"><span class="badge" style="background-color: var(--secondary-color); color: var(--primary-color);">Confirmed</span></div>
                     <div class="col-md-4 text-end">
-                        <button class="btn btn-outline-danger btn-sm">Reschedule</button>
                         <button class="btn btn-studio-primary btn-sm ms-2">View Stream</button>
                     </div>
                 </div>
