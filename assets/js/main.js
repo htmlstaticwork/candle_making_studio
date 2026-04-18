@@ -60,7 +60,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const icon = rtlToggleBtn.querySelector('i');
         if(icon) {
             // No need to change icon content, but we could if needed
-            icon.className = 'bi bi-keyboard'; /* Representing switching script/text */
+            icon.className = 'bi bi-arrow-left-right';
         }
     }
 

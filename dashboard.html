@@ -160,7 +160,7 @@
                         </span>
                     </button>
                     <button id="theme-toggle" class="theme-toggle"><i class="bi bi-moon"></i></button>
-                    <button id="rtl-toggle" class="rtl-toggle"><i class="bi bi-translate"></i></button>
+                    <button id="rtl-toggle" class="rtl-toggle"><i class="bi bi-arrow-left-right"></i></button>
                     <div class="dropdown ms-2">
                         <a href="#" class="d-flex align-items-center gap-2 text-decoration-none dropdown-toggle" data-bs-toggle="dropdown">
                             <div class="rounded-circle bg-studio-primary d-flex align-items-center justify-content-center text-white" style="width: 35px; height: 35px; background: var(--accent-gold);">
@@ -181,11 +181,19 @@
             <h1 class="mb-4 display-6 fw-800">Student Dashboard</h1>
 
             <div id="overview" class="dashboard-section active">
-                <div class="alert bg-secondary border-0 p-4 mb-5 reveal-on-scroll">
-                    <h3 class="mb-1">Welcome back, Alex! 🕯️</h3>
-                    <p class="mb-2 opacity-75">Your next workshop is <strong>Scented Soy Basics</strong> tomorrow at 2:00 PM.</p>
-                    <div class="d-flex gap-2 mt-3">
-                        <span class="badge bg-gold text-white p-2 px-3">22h : 15m : 04s Remaining</span>
+                <div class="alert border-0 p-5 mb-5 reveal-on-scroll" style="background: linear-gradient(135deg, var(--secondary-color) 0%, var(--bg-color) 100%); border: 1px solid rgba(212, 168, 83, 0.1) !important; border-radius: 24px;">
+                    <div class="row align-items-center">
+                        <div class="col-lg-8">
+                            <h2 class="mb-2 fw-800">Welcome back, Alex! 🕯️</h2>
+                            <p class="mb-4 opacity-75 fs-5">Your next workshop is <strong>Scented Soy Basics</strong> tomorrow at 2:00 PM.</p>
+                            <div class="d-flex gap-3">
+                                <span class="badge bg-gold text-white p-2 px-3 fw-bold">Live in 22h : 15m</span>
+                                <a href="#" class="text-gold fw-bold text-decoration-none small d-flex align-items-center gap-1">Add to Calendar <i class="bi bi-calendar-plus"></i></a>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 text-end d-none d-lg-block">
+                            <i class="bi bi-stars display-1 text-gold opacity-25"></i>
+                        </div>
                     </div>
                 </div>
 
@@ -232,7 +240,7 @@
                     </div>
                     <div class="col-md-4">
                         <div class="workshop-card recommended-card">
-                            <img src="assets/images/hero-2.png" class="img-fluid rounded mb-3 w-100">
+                            <img src="assets/images/dashboard-banner.png" class="img-fluid rounded mb-3 w-100">
                             <h6>Wick Optimization</h6>
                             <p class="small opacity-75">Master consistent burning.</p>
                             <button class="btn btn-studio-primary btn-sm w-100">Details</button>
@@ -249,7 +257,7 @@
                 </div>
                
                 <div class="metric-card mb-4 p-4 row mx-0 align-items-center g-3 overflow-hidden">
-                    <div class="col-md-2 col-4"><img src="assets/images/workshop-1.png" class="img-fluid rounded"></div>
+                    <div class="col-md-2 col-4"><img src="assets/images/autumn-flowers-wax.png" class="img-fluid rounded"></div>
                     <div class="col-md-4 col-8">
                         <h5 class="mb-1 small fw-bold">Scented Soy Basics</h5>
                         <p class="small opacity-50 mb-0"><i class="bi bi-calendar"></i> May 12, 2024</p>

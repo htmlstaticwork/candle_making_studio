@@ -12,26 +12,27 @@
     <style>
         body { background: var(--secondary-color); display: flex; align-items: center; justify-content: center; min-height: 100vh; padding: 40px 20px; flex-direction: column; }
         .auth-card { background: var(--card-bg); border-radius: var(--radius-lg); padding: 50px; width: 100%; max-width: 520px; box-shadow: 0 15px 40px var(--card-shadow); position: relative; margin: auto; }
-        .auth-toggles { position: absolute; top: 20px; inset-inline-end: 20px; }
+        .auth-toggles { position: fixed; top: 20px; inset-inline-end: 20px; z-index: 1000; }
         .social-btn { border: 1px solid rgba(44, 26, 14, 0.1); border-radius: var(--radius-sm); padding: 10px; flex: 1; display: flex; align-items: center; justify-content: center; gap: 8px; transition: var(--transition-smooth); font-weight: 500; font-size: 0.9rem; }
         .social-btn:hover { background: rgba(44, 26, 14, 0.05); }
         .auth-card a.text-gold:hover { color: #b68d40 !important; text-decoration: underline; text-underline-offset: 3px; }
         .auth-divider-label { background: var(--card-bg); color: rgba(44, 26, 14, 0.5); line-height: 1; }
         
         @media (max-width: 576px) {
-            .auth-card { padding: 30px 20px; }
-            .auth-toggles { top: 14px; inset-inline-end: 14px; }
-            .auth-card .text-center.mb-5 { padding-top: 20px; }
+            .auth-card { padding: 30px 20px; margin-top: 40px; }
+            .auth-toggles { top: 15px; inset-inline-end: 15px; }
+            .auth-card .text-center.mb-5 { padding-top: 10px; }
             .social-btn { font-size: 0.8rem; padding: 8px; }
         }
     </style>
 </head>
 <body>
+    <div class="auth-toggles d-flex gap-2">
+        <button id="theme-toggle" class="theme-toggle"><i class="bi bi-moon"></i></button>
+        <button id="rtl-toggle" class="rtl-toggle"><i class="bi bi-arrow-left-right"></i></button>
+    </div>
+
     <div class="auth-card reveal-on-scroll active">
-        <div class="auth-toggles d-flex gap-2">
-            <button id="theme-toggle" class="theme-toggle"><i class="bi bi-moon"></i></button>
-            <button id="rtl-toggle" class="rtl-toggle"><i class="bi bi-translate"></i></button>
-        </div>
 
         <div class="text-center mb-5">
             <a href="index.html" class="navbar-brand justify-content-center">

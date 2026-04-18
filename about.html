@@ -43,8 +43,7 @@
         }
 
         .about-hero {
-            background-color: var(--bg-color);
-            border-bottom: 1px solid rgba(44, 26, 14, 0.05);
+            border-bottom: 0; /* Handled by page-hero */
         }
 
         /* Gallery Mosaic */
@@ -193,7 +192,7 @@
                                 <i class="bi bi-moon"></i>
                             </button>
                             <button id="rtl-toggle" class="rtl-toggle" title="Toggle RTL">
-                                <i class="bi bi-translate"></i>
+                                <i class="bi bi-arrow-left-right"></i>
                             </button>
                         </li>
                     </ul>
@@ -204,8 +203,8 @@
 
     <main>
         <!-- About Hero (Minimalist) -->
-        <section class="about-hero py-5 text-center">
-            <div class="container-custom py-4 reveal-on-scroll">
+        <section class="page-hero about-hero">
+            <div class="container-custom reveal-on-scroll">
                 <p class="text-gold fw-bold mb-2">LUMORA</p>
                 <h1 class="display-3 fw-800 mb-3">Our <span class="text-gold">Journey</span></h1>
                 <div class="d-flex justify-content-center">
@@ -219,11 +218,11 @@
             <div class="container-custom">
                 <div class="row align-items-center g-5">
                     <div class="col-lg-6 reveal-on-scroll">
-                        <img src="assets/images/hero-1.png" alt="Founder" class="img-fluid rounded-4 shadow-lg">
+                        <img src="assets/images/founder-portrait.png" alt="Founder" class="img-fluid rounded-4 shadow-lg">
                     </div>
                     <div class="col-lg-6 reveal-on-scroll">
                         <p class="text-gold fw-bold">The Heart of Our Craft</p>
-                        <h2 class="display-4 fw-800 mb-4">Born from a Flicker of <span class="text-gold">Inspiration</span>.</h2>
+                        <h2 class="mb-4">Born from a Flicker of <span class="text-gold">Inspiration</span>.</h2>
                         <p class="lead mb-4">In 2018, Studio Candle began in a small suburban garage with just three scents and a dream to bring warmth to every home.</p>
                         <p class="mb-4">Founded by artisan Clara Meadows, our studio has grown into a sanctuary for creators. We believe that candle making is more than a craft—it's a sensory journey that connects us to the present moment and to each other.</p>
                         <div class="row g-4 mt-2">
@@ -288,7 +287,7 @@
                 <div class="row g-4">
                     <div class="col-md-4 reveal-on-scroll">
                         <div class="instructor-card">
-                            <img src="assets/images/hero-1.png" class="instructor-img w-100" alt="Clara Meadows">
+                            <img src="assets/images/instructor-action.png" class="instructor-img w-100" alt="Clara Meadows">
                             <div class="p-4 text-center">
                                 <h5>Clara Meadows</h5>
                                 <p class="text-gold small mb-0">Founder & Master Scentist</p>

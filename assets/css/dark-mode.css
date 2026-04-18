@@ -56,6 +56,10 @@
     border-color: var(--accent-gold);
 }
 
+[data-theme="dark"] .form-control::placeholder {
+    color: rgba(245, 230, 211, 0.45);
+}
+
 /* Shadow depth adjustments */
 [data-theme="dark"] .workshop-card {
     border-color: rgba(212, 168, 83, 0.05);

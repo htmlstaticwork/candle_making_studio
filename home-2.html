@@ -23,57 +23,18 @@
             padding-top: 0 !important;
         }
 
-        header {
-            position: fixed !important;
-            width: 100%;
-            background: transparent !important;
-            border-bottom: none !important;
-            z-index: 1080;
-            transition: all 0.4s ease;
-        }
-
-        header.header-scrolled {
-            background: var(--bg-color) !important;
-            box-shadow: 0 10px 30px var(--card-shadow);
-        }
-
-        header.header-scrolled .navbar-brand,
-        header.header-scrolled .nav-link,
-        header.header-scrolled .bi-list,
-        header.header-scrolled .theme-toggle,
-        header.header-scrolled .rtl-toggle {
-            color: var(--text-color) !important;
-        }
-
-        header .navbar-brand,
-        header .nav-link,
-        header .bi-list,
-        header .theme-toggle,
-        header .rtl-toggle {
-            color: var(--text-color) !important;
-        }
-
-        header .nav-link.active {
-            color: var(--accent-gold) !important;
-        }
-
-        header .nav-link.active::after {
-            transform: scaleX(1);
-        }
-
-        header .navbar-brand .flame-icon {
-            color: inherit !important;
-        }
-
         .hero-premium {
             min-height: 100vh;
-            padding: 0 !important;
+            padding: 80px 0 0 !important; /* Offset for fixed header */
             display: flex;
             align-items: center;
             justify-content: center;
             text-align: center;
             color: #F5E6D3;
-            background: linear-gradient(135deg, #2C1A0EDD 0%, #1A1008EE 100%), url('assets/images/blog-1.png');
+            background: 
+                linear-gradient(to bottom, rgba(0, 0, 0, 0.7) 0%, transparent 200px),
+                linear-gradient(135deg, #2C1A0EDD 0%, #1A1008EE 100%), 
+                url('assets/images/blog-1.png');
             background-size: cover;
             background-position: center;
             position: relative;
@@ -198,7 +159,7 @@
         }
 
         [data-theme="dark"] .bento-4 {
-            background: linear-gradient(to top, rgba(0, 0, 0, 0.78), rgba(0, 0, 0, 0.28)), url('assets/images/product-4.png');
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.78), rgba(0, 0, 0, 0.28)), url('assets/images/premium-votive.png');
             background-size: cover;
             background-position: center;
         }
@@ -425,7 +386,7 @@
                                 <i class="bi bi-moon"></i>
                             </button>
                             <button id="rtl-toggle" class="rtl-toggle" title="Toggle RTL">
-                                <i class="bi bi-translate"></i>
+                                <i class="bi bi-arrow-left-right"></i>
                             </button>
                         </li>
                     </ul>
@@ -514,7 +475,7 @@
                 <div class="row align-items-center g-5">
                     <div class="col-lg-6 reveal-on-scroll">
                         <i class="bi bi-chat-right-quote-fill display-2 text-gold opacity-25 mb-4 d-block"></i>
-                        <h2 class="display-5 fw-800 mb-4">&quot;The atmosphere in the studio is so calming. I didn't
+                        <h2 class="mb-4">&quot;The atmosphere in the studio is so calming. I didn't
                             just learn to make a candle, I discovered a new form of meditation.&quot;</h2>
                         <p class="fw-bold">— Sarah Jenkins, Master Workshop Attendee</p>
                     </div>
@@ -534,7 +495,7 @@
                 <div class="row align-items-end mb-5 reveal-on-scroll">
                     <div class="col-lg-7">
                         <span class="text-gold fw-bold ls-2 mb-2 text-uppercase d-block">Olfactory Engineering</span>
-                        <h2 class="display-3 fw-800 mb-0">The Anatomy of <span class="text-gold italic">Scent</span></h2>
+                        <h2 class="mb-0">The Anatomy of <span class="text-gold italic">Scent</span></h2>
                     </div>
                     <div class="col-lg-5 text-lg-end">
                         <p class="lead opacity-50 mb-0">Crafting high-density molecular experiences.</p>
@@ -580,7 +541,7 @@
                 <div class="row align-items-center g-5 py-5">
                     <div class="col-lg-7">
                         <span class="text-gold fw-bold ls-2 mb-3 d-block text-uppercase">Custom Artistry</span>
-                        <h2 class="display-3 fw-800 mb-4">Olfactory <span class="text-gold">Identity</span></h2>
+                        <h2 class="mb-4">Olfactory <span class="text-gold">Identity</span></h2>
                         <p class="lead mb-5 opacity-75">Work one-on-one with our senior scentists to develop a signature
                             fragrance line for your brand or special event. We translate emotions into aromas.</p>
 
@@ -622,7 +583,7 @@
                     </div>
                     <div class="col-lg-6 reveal-on-scroll">
                         <p class="text-gold text-uppercase fw-bold ls-2 mb-3">Limited Edition</p>
-                        <h2 class="display-4 mb-4">Midnight Ember Collection</h2>
+                        <h2 class="mb-4">Midnight Ember Collection</h2>
                         <p class="lead mb-5 opacity-75">A curated selection of deep, smokey scents designed for those
                             who find beauty in the shadows. Hand-poured into matte obsidian glass containers.</p>
                         <ul class="list-unstyled mb-5">

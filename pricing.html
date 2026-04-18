@@ -15,6 +15,27 @@
         [data-theme="light"] .gift-banner-card h4 {
             color: #F5E6D3 !important;
         }
+
+        /* FAQ Visibility Fix */
+        .accordion-button {
+            color: var(--text-color) !important;
+            box-shadow: none !important;
+            transition: var(--transition-smooth);
+        }
+        .accordion-button:not(.collapsed) {
+            background-color: rgba(212, 168, 83, 0.05) !important;
+            color: var(--accent-gold) !important;
+        }
+        .accordion-button::after {
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23D4A853'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e") !important;
+        }
+        .accordion-item {
+            border-bottom: 1px solid rgba(212, 168, 83, 0.15) !important;
+        }
+        .accordion-body {
+            color: var(--text-color) !important;
+            opacity: 0.9 !important;
+        }
     </style>
 </head>
 <body>
@@ -62,7 +83,7 @@
                                 <i class="bi bi-moon"></i>
                             </button>
                             <button id="rtl-toggle" class="rtl-toggle" title="Toggle RTL">
-                                <i class="bi bi-translate"></i>
+                                <i class="bi bi-arrow-left-right"></i>
                             </button>
                         </li>
                     </ul>
@@ -71,11 +92,16 @@
         </div>
     </header>
 
-    <main class="container-custom py-5">
-        <div class="section-title reveal-on-scroll">
-            <p>Elevate Your Craft</p>
-            <h1>Artisan Pricing Plans</h1>
+    <section class="page-hero mb-5">
+        <div class="container-custom">
+            <div class="section-title reveal-on-scroll">
+                <p>Elevate Your Craft</p>
+                <h1>Artisan Pricing Plans</h1>
+            </div>
         </div>
+    </section>
+
+    <main class="container-custom py-0">
 
         <!-- Monthly / Annual Toggle -->
         <div class="d-flex justify-content-center align-items-center gap-3 mb-5 reveal-on-scroll">
@@ -164,7 +190,7 @@
                 <div class="row align-items-center position-relative" style="z-index: 1;">
                     <div class="col-lg-8">
                         <span class="text-gold fw-bold mb-3 d-block text-uppercase ls-2">GIFT CARDS</span>
-                        <h2 class="display-4 fw-800 mb-4">The Ultimate <span class="text-gold">Artisanal</span> Gift</h2>
+                        <h2 class="mb-4">The Ultimate <span class="text-gold">Artisanal</span> Gift</h2>
                         <p class="lead opacity-75 mb-5">Surprise someone special with a Lumora workshop experience. Our gift cards arrive in a luxurious physical envelope paired with three signature scent samples to begin their olfactory journey.</p>
                         <div class="row g-4 mb-5">
                             <div class="col-md-4">
@@ -206,9 +232,17 @@
                   <h2 class="accordion-header"><button class="accordion-button bg-transparent fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#q1">Can I cancel anytime?</button></h2>
                   <div id="q1" class="accordion-collapse collapse show"><div class="accordion-body opacity-75">Yes, our monthly subscriptions are commitment-free. Cancel via your dashboard anytime.</div></div>
                 </div>
-                <div class="accordion-item bg-transparent">
+                 <div class="accordion-item bg-transparent">
                   <h2 class="accordion-header"><button class="accordion-button collapsed bg-transparent fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#q2">What if I miss a workshop?</button></h2>
                   <div id="q2" class="accordion-collapse collapse"><div class="accordion-body opacity-75">Recordings are posted to the dashboard within 24 hours of the live session.</div></div>
+                </div>
+                <div class="accordion-item bg-transparent">
+                  <h2 class="accordion-header"><button class="accordion-button collapsed bg-transparent fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#q3">Are workshop materials included?</button></h2>
+                  <div id="q3" class="accordion-collapse collapse"><div class="accordion-body opacity-75">Absolutely. All premium waxes, wicks, and scent oils required for the class are provided in-studio or delivered in your monthly kit.</div></div>
+                </div>
+                <div class="accordion-item bg-transparent">
+                  <h2 class="accordion-header"><button class="accordion-button collapsed bg-transparent fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#q4">Do you offer private studio hire?</button></h2>
+                  <div id="q4" class="accordion-collapse collapse"><div class="accordion-body opacity-75">Yes, our creative sanctuary is available for private events. Please visit our Contact page to enquire about custom packages.</div></div>
                 </div>
            </div>
         </section>

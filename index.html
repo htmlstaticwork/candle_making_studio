@@ -33,11 +33,35 @@
         /* PREMIUM HERO ANIMATION */
         .hero-section {
             position: relative;
-            min-height: calc(100dvh - 88px);
+            min-height: 100vh;
             display: flex;
             align-items: center;
             overflow: hidden;
             background: transparent !important; /* Let the animation layers show */
+            box-shadow: inset 0 -100px 100px -100px rgba(212, 168, 83, 0.2);
+            border-bottom: 1px solid rgba(212, 168, 83, 0.1);
+            padding-top: 100px; 
+            padding-bottom: 100px;
+        }
+
+        /* AMBIENT CANDLE GLOW */
+        .hero-section::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at 80% 40%, rgba(212, 168, 83, 0.18), transparent 70%);
+            z-index: 1;
+            pointer-events: none;
+            animation: glowBreathing 12s infinite alternate ease-in-out;
+        }
+
+        [data-theme="dark"] .hero-section::after {
+            background: radial-gradient(circle at 80% 40%, rgba(212, 168, 83, 0.25), transparent 70%);
+        }
+
+        @keyframes glowBreathing {
+            0% { opacity: 0.2; transform: scale(1) translate(0,0); }
+            100% { opacity: 0.6; transform: scale(1.2) translate(-2%, -2%); }
         }
 
         .hero-animation-wrapper {
@@ -56,12 +80,17 @@
         }
 
         [data-theme="light"] .hero-animation-bg {
-            background: linear-gradient(-45deg, #F5E6D3, #FDEBD0, #FFF8F0, #F5E6D3);
-            opacity: 0.8;
+            background: linear-gradient(-45deg, #FFF9F2, #FDEBD0, #F5E6D3, #FFE5B4);
+            background-size: 400% 400%;
+            animation: heroGradientShift 15s ease infinite;
+            opacity: 1;
         }
 
         [data-theme="dark"] .hero-animation-bg {
-            background: linear-gradient(-45deg, #1A120B, #3E2723, #000000, #1A120B);
+            background: linear-gradient(-45deg, #0A0705, #2C1A0E, #1A120B, #0A0705);
+            background-size: 400% 400%;
+            animation: heroGradientShift 15s ease infinite;
+            opacity: 1;
         }
 
         @keyframes heroGradientShift {
@@ -70,10 +99,31 @@
             100% { background-position: 0% 50%; }
         }
 
+        .hero-mesh-glow {
+            position: absolute;
+            inset: 0;
+            background: 
+                radial-gradient(at 0% 0%, rgba(212, 168, 83, 0.15) 0px, transparent 50%),
+                radial-gradient(at 100% 0%, rgba(224, 123, 84, 0.1) 0px, transparent 50%),
+                radial-gradient(at 100% 100%, rgba(212, 168, 83, 0.15) 0px, transparent 50%),
+                radial-gradient(at 0% 100%, rgba(224, 123, 84, 0.1) 0px, transparent 50%);
+            pointer-events: none;
+            z-index: 1;
+            opacity: 0.8;
+        }
+
+        [data-theme="dark"] .hero-mesh-glow {
+            background: 
+                radial-gradient(at 50% 0%, rgba(212, 168, 83, 0.15) 0px, transparent 60%),
+                radial-gradient(at 100% 50%, rgba(224, 123, 84, 0.1) 0px, transparent 50%),
+                radial-gradient(at 0% 50%, rgba(212, 168, 83, 0.1) 0px, transparent 50%);
+            opacity: 1;
+        }
+
         .hero-vignette {
             position: absolute;
             inset: 0;
-            z-index: 1;
+            z-index: 2;
             background: radial-gradient(circle, transparent 40%, rgba(0,0,0,0.4) 100%);
             opacity: 0;
             transition: opacity 0.5s ease;
@@ -97,14 +147,15 @@
         }
 
         [data-theme="light"] .hero-particles span {
-            background: rgba(212, 168, 83, 0.6);
-            width: 4px;
-            height: 4px;
+            background: radial-gradient(circle, rgba(212, 168, 83, 0.8), transparent 70%);
+            box-shadow: 0 0 10px rgba(212, 168, 83, 0.3);
+            width: 3px;
+            height: 3px;
         }
 
         [data-theme="dark"] .hero-particles span {
-            background: #FFB74D;
-            box-shadow: 0 0 10px rgba(255, 183, 77, 0.5);
+            background: radial-gradient(circle, #D4A853, transparent 70%);
+            box-shadow: 0 0 15px rgba(212, 168, 83, 0.6);
         }
 
         @keyframes particleFloat {
@@ -125,6 +176,59 @@
         .hero-particles span:nth-child(8) { left: 35%; width: 5px; height: 5px; animation-delay: 5s; animation-duration: 15s; }
         .hero-particles span:nth-child(9) { left: 65%; width: 4px; height: 4px; animation-delay: 2s; animation-duration: 14s; }
         .hero-particles span:nth-child(10) { left: 90%; width: 5px; height: 5px; animation-delay: 7s; animation-duration: 16s; }
+
+        /* LUMINOUS BLOBS ANIMATION */
+        .hero-blobs {
+            position: absolute;
+            inset: 0;
+            z-index: 1;
+            overflow: hidden;
+            pointer-events: none;
+            opacity: 0.6;
+            filter: blur(80px);
+        }
+
+        .blob {
+            position: absolute;
+            border-radius: 50%;
+            animation: blobFloat 25s infinite alternate ease-in-out;
+        }
+
+        .blob-1 {
+            width: 400px;
+            height: 400px;
+            background: rgba(212, 168, 83, 0.2);
+            top: -10%;
+            left: -10%;
+            animation-duration: 30s;
+        }
+
+        .blob-2 {
+            width: 500px;
+            height: 500px;
+            background: rgba(224, 123, 84, 0.15);
+            bottom: -20%;
+            right: -10%;
+            animation-duration: 35s;
+            animation-delay: -5s;
+        }
+
+        .blob-3 {
+            width: 300px;
+            height: 300px;
+            background: rgba(212, 168, 83, 0.25);
+            top: 40%;
+            left: 30%;
+            animation-duration: 25s;
+            animation-delay: -10s;
+        }
+
+        @keyframes blobFloat {
+            0% { transform: translate(0, 0) scale(1) rotate(0deg); }
+            33% { transform: translate(10%, 15%) scale(1.1) rotate(120deg); }
+            66% { transform: translate(-5%, 20%) scale(0.9) rotate(240deg); }
+            100% { transform: translate(0, 0) scale(1) rotate(360deg); }
+        }
 
         .hero-flame-glow {
             position: absolute;
@@ -179,6 +283,7 @@
             max-width: 520px;
             margin-inline: auto;
             box-shadow: 0 20px 50px rgba(44, 26, 14, 0.15);
+            max-height: 65vh;
         }
         .image-overlay-glow::after {
             content: '';
@@ -402,7 +507,7 @@
                                 <i class="bi bi-moon"></i>
                             </button>
                             <button id="rtl-toggle" class="rtl-toggle" title="Toggle RTL">
-                                <i class="bi bi-translate"></i>
+                                <i class="bi bi-arrow-left-right"></i>
                             </button>
                         </li>
                     </ul>
@@ -417,6 +522,12 @@
             <!-- Animation Layers -->
             <div class="hero-animation-wrapper">
                 <div class="hero-animation-bg"></div>
+                <div class="hero-blobs">
+                    <div class="blob blob-1"></div>
+                    <div class="blob blob-2"></div>
+                    <div class="blob blob-3"></div>
+                </div>
+                <div class="hero-mesh-glow"></div>
                 <div class="hero-vignette"></div>
                 <div class="hero-particles">
                     <span></span><span></span><span></span><span></span><span></span>
@@ -558,7 +669,7 @@
             <div class="container-custom">
                 <div class="row align-items-center g-5">
                     <div class="col-lg-5 reveal-on-scroll">
-                        <h2 class="display-5 mb-4">A Scented <span class="text-gold">Symphony</span>.</h2>
+                        <h2 class="mb-4">A Scented <span class="text-gold">Symphony</span>.</h2>
                         <p class="lead mb-4">Every candle begins with a whisper of nature, distilled into pure essential oils that transform your space into a sanctuary.</p>
                         <div class="scent-card reveal-on-scroll mb-4" style="--delay: 1">
                             <h5 class="text-gold">Floral Top Notes</h5>
@@ -584,7 +695,7 @@
                 <div class="row flex-row-reverse align-items-center g-5">
                     <div class="col-lg-6 reveal-on-scroll">
                         <div class="ps-lg-5">
-                            <h2 class="display-5 mb-4">Driven by <span class="text-gold">Precision</span>.</h2>
+                            <h2 class="mb-4">Driven by <span class="text-gold">Precision</span>.</h2>
                             <p class="mb-5">Our master pourers treat every jar like a canvas. From the exact temperature of the wax to the placement of the wick, beauty is in the meticulous detail.</p>
                             <div class="row g-4">
                                 <div class="col-6">
@@ -612,7 +723,7 @@
             <div class="position-absolute inset-0 d-flex align-items-center justify-content-center text-center p-4" style="background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.6), rgba(0,0,0,0.3));">
                 <div style="max-width: 600px;" class="reveal-on-scroll">
                     <p class="text-white fw-bold mb-3 text-uppercase ls-2" style="text-shadow: 0 2px 8px rgba(0,0,0,0.6); font-size: 0.9rem;">Host Your Story</p>
-                    <h2 class="display-3 fw-800 text-white mb-4" style="text-shadow: 0 4px 15px rgba(0,0,0,0.8);">Intimate Studio Hire</h2>
+                    <h2 class="text-white mb-4" style="text-shadow: 0 4px 15px rgba(0,0,0,0.8);">Intimate Studio Hire</h2>
                     <p class="text-white opacity-100 mb-5 fs-5 fw-500" style="text-shadow: 0 2px 6px rgba(0,0,0,0.6);">Whether it's a birthday, bridal shower, or team building, our creative sanctuary provides the perfect light for connection.</p>
                     <a href="contact.html" class="btn-studio-primary">Enquire for Events</a>
                 </div>
@@ -626,7 +737,7 @@
                     <div class="col-lg-5 reveal-on-scroll">
                         <div class="section-title text-start-logical mb-4">
                             <p class="text-gold text-uppercase ls-2 mb-2">Our Community</p>
-                            <h2 class="display-4 fw-800">Crafted by <span class="text-gold">You</span>.</h2>
+                            <h2>Crafted by <span class="text-gold">You</span>.</h2>
                         </div>
                         <p class="lead mb-5 opacity-75">Our studio isn't just about candles; it's a sanctuary where creativity blossoms. Every pour tells a story of discovery, precision, and the beautiful light we create together.</p>
                         
